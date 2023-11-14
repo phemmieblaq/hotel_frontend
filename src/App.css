@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   font-family: Familjen Grotesk;
-  background-color: #fff;
+  background-color: #9d2b2b;
 }
 *,
 *::before,
@@ -20,4 +20,7 @@ root {
   --text-primary: #2C2B2B;
   --text-secondary: #4B4848;
   
+}
+.allWrapper{
+  width:100%;
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import './style.css'
 
-const Button = ({title,secondary}) => {
+const Button = ({title,secondary,onClick}) => {
   return (
     <div>
         {!secondary?(
-    <button className="primary">
+    <button onClick ={onClick} className="primary">
     <p>{title}</p> 
       
     </button >):(
