@@ -25,11 +25,11 @@ font-weight: 600;
 line-height: normal;
 }
 .question-container{
- 
+
     display: flex;
-   
-    gap:24px;
     flex-direction: column;
+    gap:24px;
+ 
  
 
 }

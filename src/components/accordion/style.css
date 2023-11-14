@@ -1,14 +1,12 @@
 
-.all-Wrapper{
+.all-container{
    
   max-width: 100%;
-   
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
     
 flex-direction: column;
 gap:24px;
+
 
 
 
@@ -22,18 +20,17 @@ gap:24px;
  
     width:100%;
     display: flex;
-
 justify-content: space-between;
 align-items: center;
 
 }
 .question {
-    color: var(--text-primary, #2C2B2B);
-    font-family: Familjen Grotesk;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+    color: #2C2B2B;
+font-family: Familjen Grotesk;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
 .imageWrapper{
     display: flex;
@@ -47,13 +44,12 @@ background: #FFF;
 }
 
 .answer{
-
-
-    color: var(--text-secondary);
+ color: var(--text-secondary);
 
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+
 
 }

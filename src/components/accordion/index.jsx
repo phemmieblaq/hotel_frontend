@@ -15,7 +15,7 @@ const Accordion = ({
     const [collapsed, setCollapsed] = useState(false);
     
   return (
-    <div className="all-Wrapper">
+    <div className="all-container">
     <div className="small-wrapper">
         <p className="question">
             {question}
@@ -30,12 +30,12 @@ const Accordion = ({
         </div>
 
         
-        {collapsed && (<div className="answerWrapper">
-        <p className="answer">
+        {collapsed && (
+        <h2 className="answer">
             {answer}
-        </p>
+        </h2>
 
-        </div>)}
+       )}
         
     </div>
   )
