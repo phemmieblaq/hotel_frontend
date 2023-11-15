@@ -85,3 +85,6 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
     }
+.buttonWrapper{
+    width:100%;
+}

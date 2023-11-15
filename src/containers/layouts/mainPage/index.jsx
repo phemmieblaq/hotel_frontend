@@ -4,9 +4,10 @@ import Header from '../../header'
 
 import Faq from '../../faq'
 import Footer from '../../footer'
+import { Outlet } from 'react-router-dom'
 
 
-const LandingPageLayout = ({children}) => {
+const LandingPageLayout = () => {
   return (
     <div>
            
@@ -15,7 +16,7 @@ const LandingPageLayout = ({children}) => {
                 <Header/>
             </header>
             <body>
-                {children}
+            <Outlet/>
             </body>
             
            <div className="faq-section">
