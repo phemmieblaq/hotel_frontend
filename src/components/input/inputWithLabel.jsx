@@ -65,7 +65,7 @@ const InputWithLabel = ({
 
   return (
 
-      <div className={`custom-div ${errorMessage ? 'error' : warningMessage? 'warning':''}`}>
+      <div className={`custom-div `}>
   
       <div className="Top">
         {label && <label className='Label'>{label}</label>}
@@ -74,8 +74,9 @@ const InputWithLabel = ({
         {warningMessage ? <div className='WarnMsg'>{warningMessage}</div> : null}
       </div>
 
-      <div className="InputWrapper"
-        border={errorMessage ? "1px solid red" : active ? "1px solid #00A2D4" : "1px solid #ececec"}
+      <div className={`InputWrapper ${errorMessage ? 'error' : warningMessage? 'warning':''}`}
+
+
        
         ref={inputRef}
         onFocus={() => handleBorder(true)}
