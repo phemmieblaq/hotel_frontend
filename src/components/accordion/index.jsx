@@ -20,8 +20,9 @@ const Accordion = ({
         <p className="question">
             {question}
         </p>
-        <div className="imageWrapper" onClick={() => setCollapsed(!collapsed)} >
+        <div className="ImageWrapper" onClick={() => setCollapsed(!collapsed)} >
           {!collapsed?(
+            
             <img src={Collapse} alt="" />
           ):
           <img src={Expand} alt="" />}

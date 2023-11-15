@@ -23,6 +23,8 @@ gap:24px;
 justify-content: space-between;
 align-items: center;
 
+gap:56px;
+
 }
 .question {
     color: #2C2B2B;
@@ -32,16 +34,20 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
-.imageWrapper{
-    display: flex;
+.ImageWrapper{
+display: flex;
 width: 40px;
 height: 40px;
 padding: 8px;
 justify-content: center;
 align-items: center;
 border-radius: 40px;
+border:1px solid blue;
+
 background: #FFF;
+
 }
+
 
 .answer{
  color: var(--text-secondary);
