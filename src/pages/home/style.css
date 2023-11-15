@@ -1,0 +1,88 @@
+.title-wrapper{
+    color: #292D32;
+font-family: Familjen Grotesk;
+font-size: 56px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top:95px;
+margin-bottom:48px ;
+text-align: center;
+width:100%;
+
+
+}
+.textLogoWrapper{
+    display:flex;
+    flex-direction: column;
+   gap: 95px; 
+}
+.card-wrapper{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 100px;
+    /* border:1px solid red; */
+    margin-bottom: 107px;
+}
+.map-wrapper{
+    width:100%;
+   display:flex;
+   align-items: center; 
+   justify-content: space-between;
+   width: 100%;
+   padding-inline: 100px;
+   gap:48px;
+   margin-bottom: 110px;
+}
+.right-container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+   text-align: left;
+    padding-right:28px;
+   
+}
+.heading-wrapper{
+    color:  #2C2B2B;
+font-family: Familjen Grotesk;
+font-size: 40px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin-bottom: 24px;
+width: 100%;
+
+}
+.Image-wrapper{
+    display: flex;
+   gap:8px;
+   margin-bottom: 40px;
+}
+.text-wrapper{
+    display: flex;
+   flex-direction: column;
+    justify-content: center ;
+    gap:16px;
+  
+}
+.direction-wrapper{
+    color:  #2C2B2B;
+font-family: Familjen Grotesk;
+font-size: 40px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+width: 100%;
+}
+.text-wrapper p{
+    color:  #4B4848;
+font-family: Familjen Grotesk;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}

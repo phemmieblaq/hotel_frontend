@@ -63,9 +63,11 @@ const HotelCard = ({title ='Deluxe Room' , price='$45/night'}) => {
             <p className="price">
                 {price}
             </p>
+            <div className="buttonWrapper">
             <Button
       title ='Book Now'
       secondary/>
+      </div>
         </div>
 
 
