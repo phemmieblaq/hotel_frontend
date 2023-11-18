@@ -25,7 +25,7 @@ const NorwichAreas = ({leftPicture,rightPicture,leftTitle,rightTitle}) => {
             <div className="headingWrapper">
             <div className="picture-caption">
               <h4 className="experience-heading">
-              {leftTitle}
+            {rightTitle}
               </h4>
               </div>
               

@@ -12,6 +12,10 @@ import house from '../../assets/svg/house.svg'
 import people from '../../assets/svg/people.svg'
 import castle from '../../assets/png/castle.png'
 import park from '../../assets/png/park.png'
+import ghostWalk from '../../assets/png/ghostWalk.png'
+import broads from '../../assets/png/broads.png'
+import garden from '../../assets/png/garden.png'
+import collection from '../../assets/png/collection.png'
 import NorwichAreas from '../../features/norwich';
 
 
@@ -167,14 +171,15 @@ const Home = () => {
           rightPicture={park}
           rightTitle='Wensum Park'/>
            <NorwichAreas
-          leftPicture={castle}
-          leftTitle='Norwich Castle'
-          rightPicture={park}
-          rightTitle='Wensum Park'/> <NorwichAreas
-          leftPicture={castle}
-          leftTitle='Norwich Castle'
-          rightPicture={park}
-          rightTitle='Wensum Park'/>
+          leftPicture={ghostWalk}
+          leftTitle='Norwich Ghost Walks'
+          rightPicture={broads}
+          rightTitle=' The Broads National Park'/>
+           <NorwichAreas
+          leftPicture={garden}
+          leftTitle='The Plantation Garden'
+          rightPicture={collection}
+          rightTitle='The South Asia Collection'/>
 
         </div>
     </div>

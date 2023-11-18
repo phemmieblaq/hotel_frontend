@@ -8,7 +8,7 @@
     max-height:540px;
 
 }
-.left-container-image{
+.left-container-image,.right-container-image{
   width:100%;
     position: relative;
     max-height:auto;
@@ -23,7 +23,7 @@ height: 100vh;
 }
 
 
-.picture-caption, .right-picture-caption{
+.picture-caption{
 position: absolute;
 bottom: 0;
 
@@ -41,7 +41,7 @@ z-index: 344;
 
 
 }
-.experience-heading, .right-experience-heading{
+.experience-heading {
     color: #FFF;
 
 font-size: 24px;
