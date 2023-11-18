@@ -4,10 +4,20 @@ import './style.css';
 import HotelCard from '../../components/cards/hotelCard';
 import MapContainer from '../../containers/map';
 import location from '../../assets/svg/location.svg'
+import gym from '../../assets/png/gym.jpeg'
+import Restaurant from '../../assets/png/Restaurant.jpeg'
+import Bar from '../../assets/png/Bar.jpeg'
+import hall from '../../assets/png/hall.jpeg'
+import house from '../../assets/svg/house.svg'
+import people from '../../assets/svg/people.svg'
+import castle from '../../assets/png/castle.png'
+import park from '../../assets/png/park.png'
+import NorwichAreas from '../../features/norwich';
+
 
 const Home = () => {
   return (
-    <div>
+    <div className='main-container '>
         <div className="textLogoWrapper">
             <MainBackground/>
     
@@ -52,8 +62,121 @@ const Home = () => {
         </div>
         </div>
         <h3 className='title-wrapper'>We are beyond a palace to relax</h3>
+        <div className="facilities-wrapper">
+          <div className="left-container-picture">
+            <img src={gym} alt="gym" className='gym-picture' />
+            <div className="image-caption">
+              <h4 className="facility-heading">
+                Gym
+              </h4>
+              <p>You can continue your fitness journey  at ease while enjoying your holiday <br/>
+                 &#160;</p>
+
+
+
+            </div>
+          </div>
+      <div className="right-wrapper">
+      <div className="first-right-container-picture">
+            <img src={Restaurant} alt="gym" className='restaurant-picture' />
+            <div className="image-caption">
+              <h4 className="facility-heading">
+              Restaurant
+              </h4>
+              <p>Enjoy over 12 cuisines and over 120+ meals and 5 special cocktail experience only available in our hotel.  </p>
+
+
+
+
+            </div>
+
+      </div>
+      <div className="first-right-container-picture">
+            <img src={Bar} alt="gym" className='bar-picture' />
+            <div className="image-caption">
+              <h4 className="facility-heading">
+                Bar
+              </h4>
+              <p>We have variety of drinks available for you to relax and connect with others in our bar. connecting people from different walks of life </p>
+
+
+
+
+            </div>
+
+      </div>
+
+        </div>
         
-      
+        </div>
+        <h3 className='title-wrapper'>We are beyond a palace to relax</h3>
+         {/* hall */}
+        <div className="hall-wrapper">
+          <div className="hall-image-wrapper">
+            <img src={hall} alt="hall" className='hall-image'/>
+
+          </div>
+         
+          <div className="hall-content">
+            <div className='revolve'>
+            <h4>Hall Revolve</h4>
+            <div id="iconWrapper">
+              <div>
+              <img src={house} alt="" />
+              </div>
+              <p>10 X 22 X 3.6</p>
+           
+
+            </div>
+            <div id="iconWrapper">
+              <div>
+              <img src={people} alt="" />
+              </div>
+              <p>20-60 Adults</p>
+           
+
+            </div>
+            
+            </div>
+            <h5>SEATING PLAN</h5>
+            <div className="plan_container">
+             
+              <h6>Theater: 50</h6>
+              <div className="dotWrapper">
+                <div className="dot"/>
+              <h6>Class room: 60</h6>
+              </div>
+              
+              <div className="dotWrapper">
+                <div className="dot"/>
+              <h6>U shape: 45</h6>
+              </div>
+
+
+            </div>
+            <p className="details">The larger half of the ballroom, with natural daylight, is ideal for conferences with breakout sessions. Enjoy a range of layouts and state-of-the-art equipment.</p>
+          </div>
+          
+
+        </div>
+        <h3 className='title-wrapper'>Explore the city</h3>
+        <div className="experience_wrapper">
+          <NorwichAreas
+          leftPicture={castle}
+          leftTitle='Norwich Castle'
+          rightPicture={park}
+          rightTitle='Wensum Park'/>
+           <NorwichAreas
+          leftPicture={castle}
+          leftTitle='Norwich Castle'
+          rightPicture={park}
+          rightTitle='Wensum Park'/> <NorwichAreas
+          leftPicture={castle}
+          leftTitle='Norwich Castle'
+          rightPicture={park}
+          rightTitle='Wensum Park'/>
+
+        </div>
     </div>
   )
 }
