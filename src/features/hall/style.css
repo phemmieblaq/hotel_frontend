@@ -1,0 +1,109 @@
+.hall-wrapper{
+    width:100%;
+   display:flex;
+
+   justify-content: space-between;
+   width: 100%;
+   padding-inline: 100px;
+   gap:48px;
+
+  
+}
+.hall-image-wrapper{
+    max-height: 550px;
+    width:100%;
+    overflow: hidden;
+ 
+}
+.hall-image-wrapper .hall-image{
+    width: 100%;
+ 
+    display: block;
+    height: auto;
+ 
+}
+.hall-content{
+
+  width:100%;
+  max-width:650px;
+    padding: 40px 100px 149px 0px;
+
+
+}
+.hall-content .revolve{
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+   
+}
+.hall-content h4{
+    color:  #2C2B2B;
+font-family: Familjen Grotesk;
+font-size: 32px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+#iconWrapper{
+display: flex;
+    gap:16px;
+    flex-direction: row;
+    width:100%;
+   
+   
+    
+}
+#iconWrapper img{
+    width: 24px;;
+}
+#iconWrapper>  p{
+    color:  #4B4848;
+font-family: Familjen Grotesk;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+h5{
+    color:  #2C2B2B;
+font-family: Familjen Grotesk;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 0.99px;
+margin: 20px 0 12px 0;
+}
+.plan_container{
+    display:flex;
+    gap:16px;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+   
+}
+h6,.details{
+    color:  #4B4848;
+font-family: Familjen Grotesk;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width:100%;
+}
+.dotWrapper{
+    display: flex;
+        gap:16px;
+      align-items: center;
+        width:100%;
+       
+       
+        
+    }
+    .dotWrapper .dot{
+    width:4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #000;
+}

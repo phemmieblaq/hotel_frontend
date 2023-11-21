@@ -3,6 +3,8 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import LandingPageLayout from "../containers/layouts/mainPage";
 import Home from "../pages/home";
+import Experience from "../pages/experience";
+import EventRooms from "../pages/event";
 const AppRouter = () => {
 
 return (
@@ -13,6 +15,8 @@ return (
       <Routes>
       <Route path="/" element={ <LandingPageLayout />}>
                   <Route index element={<Home />} />
+                  <Route path="experience" element={<Experience />} />
+                  <Route path="events" element={<EventRooms />} />
                   </Route>     
       </Routes>
        <Toaster

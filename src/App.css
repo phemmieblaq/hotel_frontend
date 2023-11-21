@@ -16,10 +16,6 @@ body, html {
   margin: 0;
 }
 
-p {
-  margin: 0;
-  width:100%;
-}
 
 root {
   /* Colors variable */
