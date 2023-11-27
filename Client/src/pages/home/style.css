@@ -15,7 +15,7 @@ width:100%;
 .textLogoWrapper{
     display:flex;
     flex-direction: column;
-   gap: 95px; 
+    gap: 95px; 
 }
 .card-wrapper{
     width:100%;

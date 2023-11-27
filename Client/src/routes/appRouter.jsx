@@ -1,21 +1,22 @@
-import React, { Suspense,} from "react";
+import React, { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
-import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPageLayout from "../containers/layouts/mainPage";
 import Home from "../pages/home";
+
 const AppRouter = () => {
-
-return (
-
-
-  <Suspense >
-    <Router> 
-      <Routes>
-      <Route path="/" element={ <LandingPageLayout />}>
-                  <Route index element={<Home />} />
-                  </Route>     
-      </Routes>
-       <Toaster
+  return (
+    <Suspense>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPageLayout />}>
+            <Route index element={<Home />} />
+          </Route>
+          <Route path="/accomodation" element={<LandingPageLayout />}>
+            <Route index element={<Home />} />
+          </Route>
+        </Routes>
+        <Toaster
           position="top-right"
           toastOptions={{
             className: "",
@@ -59,11 +60,9 @@ return (
             },
           }}
         />
-        </Router>
+      </Router>
     </Suspense>
-)
-     
+  );
 };
-
 
 export default AppRouter;
