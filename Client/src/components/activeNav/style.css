@@ -1,5 +1,8 @@
-
-
+/*
+  Notes:-
+  Caleb:
+  1.) Commented "a::affter" and a.active::after as it left a blue line under the logo and i am uncertain the pourpose of the code.
+*/
 a {
   color:  #4B4848;
   font-family: Familjen Grotesk;
@@ -10,14 +13,12 @@ a {
 }
 
 a.active {
- 
   color: #700511;
-    border-bottom: 4px solid #700511;
-   
-    width: 56px;
+  border-bottom: 4px solid #700511;
+  width: 56px;
 }
 
-a::after {
+/* a::after {
   content: '';
   display: block;
   width: 0;
@@ -31,4 +32,4 @@ a::after {
 
 a.active::after {
   width: 56px;
-}
+} */
