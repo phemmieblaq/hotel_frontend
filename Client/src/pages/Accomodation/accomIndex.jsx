@@ -7,16 +7,23 @@
 */
 
 import React from 'react'
+
+import {useEffect, useState} from 'react'
 import './style.css';
 import HotelCard from '../../components/cards/hotelCard';
 import MapContainer from '../../containers/map';
 import location from '../../assets/svg/location.svg'
 import AccomBackground from '../../containers/AccomBackground'
 import AccomDisplay from '../../components/AccomDisplay'
-import tempImage from '../../assets/svg/wifi.svg'
+import {cards} from './index'
+
+console.log(cards)
 
 
 const Accomodation = () => {
+
+  const [value, setValue] = useState(0); // used to see which card was clicked
+
   return (
     // Container for the whole Home Component
     <div class="container">
@@ -24,13 +31,15 @@ const Accomodation = () => {
       <div id="backgrounder"> <AccomBackground/> </div>
 
       
-      <div id="displayer"> <AccomDisplay image={tempImage} /> </div>
+      <div id="displayer"> <AccomDisplay obj={cards[value]}/> </div>
+
 
       {/* Div for the Hotel room cards shown on the landing page */}
       <div className="card-wrapper">
-        <HotelCard/>
-        <HotelCard/>
-        <HotelCard/>
+        {cards?.map((obj, index)=>(
+          // <HotelCard/>
+          <HotelCard setValue={setValue} num={index} title={obj.card.type} feet={obj.card.feet} noBeds={obj.card.noBeds}/>
+        ))}
       </div>
 
       {/* Simple h2 tag for "Location" */}

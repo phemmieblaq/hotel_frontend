@@ -1,58 +1,82 @@
 .bigDiv {
-    display: flex;
-    gap: 20px; /* Adjust the gap according to your spacing preference */
-    width: 100%;
-    height: 70vh;
-    /* margin-top: 243px;  */
-    border: 1px solid #ccc; /* Optional border for visualization */
-    padding: 20px; /* Optional padding for visualization */
-  }
-  
-  .displayImage {
-    flex: 1; /* Takes up available space */
-    padding: 60px;
-    /* background-color: red; */
-  }
-  
-  .displayInfo {
-    flex: 1; /* Takes up available space */
-    background-color: purple;
-    padding: 20px;
-  }
-
-  .AdTitle {
-    margin: 0;
-    background-color: aqua;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20%;
+  display: flex;
+  gap: 20px;
+  /* Adjust the gap according to your spacing preference */
+  width: 100%;
+  height: 70vh;
+  border: 1px solid #ccc;
+  /* Optional border for visualization */
+  padding: 20px;
+  background-color: #E8E4C9;
+  /* Optional padding for visualization */
 }
 
-.Adparagraph{
-    background-color: chocolate;
-    text-align: center;
-    height: 30%;
+.displayImage {
+  flex: 1;
+  /* Takes up available space */
+  padding: 60px;
+  /* background-color: red; */
 }
-  
-  .amenities {
-    background-color: black;
-    height: 40%;
-    display: flex;
-    justify-content: space-around;
-  }
-  .adHighlights{
-    background-color: aquamarine;
-    width: 50%;
-    height: 100%;
 
-  }
-  .adRoomDetails{
-    background-color: beige;
-    width: 50%;
-    height: 100%;
-  }
-  .adButton{
-    
-  }
+.displayInfo {
+  flex: 1;
+  /* Takes up available space */
+  padding: 20px;
+}
+
+.AdTitle {
+  margin: 0;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  font-family: Familjen Grotesk;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.Adparagraph {
+  display: flex;
+  text-align: left;
+  height: 40%;
+  justify-content: center;
+  align-items: center;
+  font-family: Familjen Grotesk;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.amenities {
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.adHighlights {
+  width: 50%;
+  height: 100%;
+}
+
+.adHighlights h5,
+.adRoomDetails h5 {
+  font-family: Familjen Grotesk;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 5px;
+}
+
+.adRoomDetails {
+  width: 50%;
+  height: 100%;
+}
+
+.adButton {
+  justify-content: center;
+  width: 100%;
+  display: flex;
+}
