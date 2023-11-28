@@ -1,20 +1,11 @@
 import React from 'react'
 import './style.css'
 
-const Button = ({title,secondary,onClick}) => {
+const Button = ({title, onClick}) => {
   return (
-    <div>
-        {!secondary?(
-    <button onClick ={onClick} className="primary">
-    <p>{title}</p> 
-      
-    </button >):(
-    
-    <button className='secondary'>
+    <button className='primary'>
        <p>{title}</p> 
-    </button>)}
-    </div>
-  )
+    </button>)
 }
 
 export default Button

@@ -1,66 +1,65 @@
-.allWrapper{
+.allWrapper {
     display: flex;
     max-width: 100%;
-    /* border: 1px solid red; */
     width: 100%;
+    height: 10vh;
     padding: 80px 100px 40px 100px;
     justify-content: center;
     align-items: center;
     background: #FFF;
-    margin :0 auto;
-    position: fixed;
-    top:0;
-    left:0;
-    z-index:20;
-   
-
 }
-.innerWrapper{
+
+.innerWrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: center;
 }
-.logoWrapper{
+
+.logoWrapper {
     display: flex;
-justify-content: center;
-align-items: center;
-gap: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 
 }
-h1{
+
+h1 {
     color: #363736;
-font-family: Familjen Grotesk;
-font-size: 24px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    font-family: Familjen Grotesk;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 
 }
-.linkWrapper{
+
+.linkWrapper {
     display: flex;
     align-items: center;
-    gap:24px;
+    gap: 24px;
 }
-.linkWrapper p{
+
+.linkWrapper p {
     color: #4B4848;
-font-family: Familjen Grotesk;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
-.subWrapper{
-    display: flex;
-    align-items: center;
-    gap:48px;
+    font-family: Familjen Grotesk;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
-.text{
+.subWrapper {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.text {
     color: #2C2B2B;
-font-family: Familjen Grotesk;
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+    font-family: Familjen Grotesk;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

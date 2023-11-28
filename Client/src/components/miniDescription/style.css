@@ -1,0 +1,12 @@
+.miniDesc{
+    display: flex;
+    width: 100%;
+}
+.miniDesc img{
+
+}
+.miniDesc p{
+    background-color: blueviolet;
+    color: crimson
+    
+}

@@ -2,34 +2,29 @@
   Notes:-
 
   Caleb: 
-  1.) <MainBackground/> shouldn't be main background, should be another image; couldn't find it
+  1.) unsure what the text under the Direction in the map info section is meant to address
+  2.) Final h3 for the text "We are beyond a palace to relax" might need to considerchanging to a h4 for standard practice  
 */
 
-import React from 'react';
-import MainBackground from '../../containers/mainBackground';
-import doubleBed from '../../assets/png/doubleBed.png';
+import React from 'react'
 import './style.css';
 import HotelCard from '../../components/cards/hotelCard';
+import MapContainer from '../../containers/map';
 import location from '../../assets/svg/location.svg'
+import AccomBackground from '../../containers/AccomBackground'
+import AccomDisplay from '../../components/AccomDisplay'
+import tempImage from '../../assets/svg/wifi.svg'
+
 
 const Accomodation = () => {
   return (
     // Container for the whole Home Component
-    <div>
-      {/* This is a div for the background image and the text "Choose your perfect sanctuary" */}
-      <div className="textLogoWrapper">
-        {/* Background image */}
-        <MainBackground/>
+    <div class="container">
 
-        {/* Text */}
-        <h1 className='title-wrapper'>Choose your perfect sanctuary</h1>
-      </div>
+      <div id="backgrounder"> <AccomBackground/> </div>
 
-      <div>
-        <div>
-          <image src={doubleBed}/>
-        </div>
-      </div>
+      
+      <div id="displayer"> <AccomDisplay image={tempImage} /> </div>
 
       {/* Div for the Hotel room cards shown on the landing page */}
       <div className="card-wrapper">
@@ -43,6 +38,8 @@ const Accomodation = () => {
 
       {/* Div for the Map section on the landing page */}
       <div className="map-wrapper">
+        {/* Insert actual map on the home page */}
+        <MapContainer />
 
         {/* Div for the information on the rigth hand side of the map object*/}
         <div className="right-container">

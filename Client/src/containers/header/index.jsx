@@ -17,7 +17,7 @@ import Button from '../../components/button';
 
 const Header = () => {
   return (
-    <div>
+    // <div>
         <div className="allWrapper">
             <div className="innerWrapper">
                 {/* Logo + Logo Name wrapper*/}
@@ -58,7 +58,7 @@ const Header = () => {
                 </div>
             </div>
         </div>
-    </div>
+    // </div>
   )
 }
 

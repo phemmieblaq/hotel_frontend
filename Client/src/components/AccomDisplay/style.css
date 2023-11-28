@@ -1,0 +1,58 @@
+.bigDiv {
+    display: flex;
+    gap: 20px; /* Adjust the gap according to your spacing preference */
+    width: 100%;
+    height: 70vh;
+    /* margin-top: 243px;  */
+    border: 1px solid #ccc; /* Optional border for visualization */
+    padding: 20px; /* Optional padding for visualization */
+  }
+  
+  .displayImage {
+    flex: 1; /* Takes up available space */
+    padding: 60px;
+    /* background-color: red; */
+  }
+  
+  .displayInfo {
+    flex: 1; /* Takes up available space */
+    background-color: purple;
+    padding: 20px;
+  }
+
+  .AdTitle {
+    margin: 0;
+    background-color: aqua;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
+.Adparagraph{
+    background-color: chocolate;
+    text-align: center;
+    height: 30%;
+}
+  
+  .amenities {
+    background-color: black;
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
+  }
+  .adHighlights{
+    background-color: aquamarine;
+    width: 50%;
+    height: 100%;
+
+  }
+  .adRoomDetails{
+    background-color: beige;
+    width: 50%;
+    height: 100%;
+  }
+  .adButton{
+    
+  }

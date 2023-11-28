@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPageLayout from "../containers/layouts/mainPage";
 import Home from "../pages/home";
-import Accomodation from "../pages/accomodation";
+import Accomodation from "../pages/Accomodation/accomIndex";
 
 const AppRouter = () => {
   return (
@@ -11,10 +11,8 @@ const AppRouter = () => {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPageLayout />}>
-            <Route index element={<Home />} />
-          </Route>
-          <Route path="/accomodation" element={<LandingPageLayout />}>
-            <Route index element={<Accomodation />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/accomodation" element={<Accomodation/>} />
           </Route>
         </Routes>
         <Toaster
