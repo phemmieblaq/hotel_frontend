@@ -30,7 +30,7 @@ const InputWithLabel = ({
   disable,
   onChange,
   onBlur,
-  onKeyDown = () => {},
+  onKeyDown = () => { },
   maxNumber,
   defaultValue,
   value,
@@ -65,8 +65,8 @@ const InputWithLabel = ({
 
   return (
 
-      <div className={`custom-div `}>
-  
+    <div className={`custom-div `}>
+
       <div className="Top">
         {label && <label className='Label'>{label}</label>}
 
@@ -74,10 +74,10 @@ const InputWithLabel = ({
         {warningMessage ? <div className='WarnMsg'>{warningMessage}</div> : null}
       </div>
 
-      <div className={`InputWrapper ${errorMessage ? 'error' : warningMessage? 'warning':''}`}
+      <div className={`InputWrapper ${errorMessage ? 'error' : warningMessage ? 'warning' : ''}`}
 
 
-       
+
         ref={inputRef}
         onFocus={() => handleBorder(true)}
         onBlur={() => handleBorder(false)}
@@ -130,11 +130,11 @@ const InputWithLabel = ({
           </div>
         ) : null}
 
-     
-        </div>
+
+      </div>
 
       {bottomText ? <p className='BottomText'>{bottomText}</p> : null}
-      </div>
+    </div>
   );
 };
 

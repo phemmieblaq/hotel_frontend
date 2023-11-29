@@ -1,58 +1,110 @@
-import React from 'react'
-import './form.css'
-
+import React from 'react';
+import './form.css';
 
 const Form = () => {
+    // Send form info on submit
+    const handleSubmit = async (event) => {
+        // Dtops form from refreshign after reload or submit
+        event.preventDefault();
+
+        // Get the data from the form
+        const formData = new FormData(event.target);
+        const value = Object.fromEntries(formData.entries());
+
+        // turn data entered by user into json format
+        const newData = JSON.stringify(value);
+
+        console.log(newData);
+
+        // const formDataObject = {};
+        // formData.forEach((value, key) => {
+        //     formDataObject[key] = value;
+        // });
+
+        // Send the form data to the JSONPlaceholder endpoint
+        const response = await fetch('/book', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: newData,
+        });
+
+        // Check if the request was successful (status code 200-299)
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log('Form submitted successfully. Response:', jsonResponse);
+        } else {
+            console.error('Form submission failed. Status:', response.status);
+        }
+    };
+
     return (
-        <div>
-            <form action="reservation.php" method="post" class='fake-body'>
+        <div className='formBigDiv'>
+            <form onSubmit={handleSubmit} className="form">
+                <div className='formHeading'>
+                    <h2>Booking</h2>
+                    <p>Please provide the required information to book your accomodation</p>
+                </div>
+
                 <div className="elem-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="visitor_name" placeholder="John Doe" pattern="[A-Z\sa-z]{3, 20}" required/>
+                    <label htmlFor="name">First </label>
+                    <input type="text" id="name" name="name" placeholder='name' />
+                </div>
+
+                <div className="elem-group">
+                    <label htmlFor="name">Last</label>
+                    <input type="text" id="name" name="name" placeholder='name' />
+                </div>
+
+                <div className="elem-group">
+                    <label htmlFor="email">Your E-mail</label>
+                    <input type="email" id="email" name="email" />
                 </div>
                 <div className="elem-group">
-                    <label for="email">Your E-mail</label>
-                    <input type="email" id="email" name="visitor_email" placeholder="john.doe@email.com" required />
-                </div>
-                <div className="elem-group">
-                    <label for="phone">Your Phone</label>
-                    <input type="tel" id="phone" name="visitor_phone" placeholder="498-348-3872" pattern='(\d{3})-?\s?(\d{3})-?\s?(\d{4})' required/>
+                    <label htmlFor="phone">Your Phone</label>
+                    {/* pattern='(\d{3})-?\s?(\d{3})-?\s?(\d{4})' */}
+                    <input type="tel" id="phone" name="phone" />
                 </div>
                 {/* <hr> */}
-                    <div className="elem-group inlined">
-                        <label for="adult">Adults</label>
-                        <input type="number" id="adult" name="total_adults" placeholder="2" min="1" required />
+                <div id='formGroup' className="elem-group">
+                    <div>
+                        <label htmlFor="adult">Adults</label>
+                        <input type="number" id="adult" name="adult" min="1" />
                     </div>
-                    <div className="elem-group inlined">
-                        <label for="child">Children</label>
-                        <input type="number" id="child" name="total_children" placeholder="2" min="0" required />
+                    <div>
+                        <label htmlFor="child">Children</label>
+                        <input type="number" id="child" name="child" min="0" />
                     </div>
-                    <div className="elem-group inlined">
-                        <label for="checkin-date">Check-in Date</label>
-                        <input type="date" id="checkin-date" name="checkin" required />
-                    </div>
-                    <div className="elem-group inlined">
-                        <label for="checkout-date">Check-out Date</label>
-                        <input type="date" id="checkout-date" name="checkout" required />
-                    </div>
-                    <div className="elem-group">
-                        <label for="room-selection">Select Room Preference</label>
-                        <select id="room-selection" name="room_preference" required>
-                            <option value="">Choose a Room from the List</option>
-                            <option value="connecting">Connecting</option>
-                            <option value="adjoining">Adjoining</option>
-                            <option value="adjacent">Adjacent</option>
-                        </select>
-                    </div>
+                </div>
+                <div className="elem-group inlined">
+                    <label htmlFor="checkin">Check-in Date</label>
+                    <input type="date" id="checkin-date" name="checkin" />
+                </div>
+                <div className="elem-group inlined">
+                    <label htmlFor="checkout">Check-out Date</label>
+                    <input type="date" id="checkout-date" name="checkout" />
+                </div>
+                <div className="elem-group">
+                    <label htmlFor="room-selection">Type</label>
+                    <select id="room-selection" name="room-selection" >
+                        <option value="">-- Choose a Room from the List --</option>
+                        <option value="connecting">Superior Double</option>
+                        <option value="adjoining">Superior Twin</option>
+                        <option value="adjacent">Standard Double</option>
+                        <option value="adjacent">Standard Twin</option>
+
+                    </select>
+                </div>
                 {/* </hr> */}
                 <div className="elem-group">
-                    <label for="message">Anything Else?</label>
-                    <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required></textarea>
+                    <label htmlFor="message"></label>
+                    <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." ></textarea>
                 </div>
-                <button type="submit">Book The Rooms</button>
+                <button type="submit">Book</button>
             </form>
-        </div >
-    )
-}
+        </div>
+    );
+};
 
-export default Form
+export default Form;

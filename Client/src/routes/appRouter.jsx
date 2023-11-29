@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPageLayout from "../containers/layouts/mainPage";
 import Home from "../pages/home";
 import Accomodation from "../pages/Accomodation/accomIndex";
-import Form from "../components/form/Form";
+import Book from "../pages/Book/book";
 
 const AppRouter = () => {
   return (
@@ -14,10 +14,10 @@ const AppRouter = () => {
           <Route path="/" element={<LandingPageLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/accomodation" element={<Accomodation/>} />
-            <Route path="/book" element={<Form/>} />
+            <Route path="/book" element={<Book/>} />
           </Route>
         </Routes>
-        <Toaster
+        {/* <Toaster
           position="top-right"
           toastOptions={{
             className: "",
@@ -60,7 +60,7 @@ const AppRouter = () => {
               },
             },
           }}
-        />
+        /> */}
       </Router>
     </Suspense>
   );

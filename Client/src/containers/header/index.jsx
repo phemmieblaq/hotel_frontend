@@ -37,7 +37,7 @@ const Header = () => {
                 <div className={togClass}>
                     <ActiveNav path='/'text='Home'/> 
                     <ActiveNav path='/accomodation'text='Rooms'/> 
-                    <ActiveNav path='/experience' text='Experience'/> 
+                    <ActiveNav path='/book' text='Experience'/> 
                     <ActiveNav path='/events' text='Event'/>
                     <ActiveNav path='/faqs' text='FAQs'/>
                 </div>

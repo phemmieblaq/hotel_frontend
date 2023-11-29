@@ -15,7 +15,9 @@ async function selectAllFrom(table) {
     }
   }
   
-
+app.post("/book", (req,res) =>{
+    console.log(req.body)
+})
 
 app.post("/", (req,res) =>{
     // Get the username and password from the json 
@@ -97,4 +99,5 @@ app.get("/management", async (req,res)=>{
     console.log(res2)
 })
 
-app.listen(3000)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {console.log(`server listening at port ${PORT}`)});

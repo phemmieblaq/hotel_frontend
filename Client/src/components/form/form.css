@@ -1,63 +1,107 @@
-.fake-body {
-    width: 500px;
-    margin: 0 auto;
-    padding: 50px;
+/* Container round the form */
+.formBigDiv{
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
 }
 
-div.elem-group {
-    margin: 20px 0;
+/* Actual form */
+.form {
+    background-color: white;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    padding: 2rem;
 }
+/* (Heading + text) */
+.formHeading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+} 
+/* Heading of the form */
+.formHeading h2{
+    color: black;
+    font-family: Familjen Grotesk;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: left;
+    letter-spacing: 1.5px;
+    margin-right: 25%;
 
-div.elem-group.inlined {
-    width: 49%;
-    display: inline-block;
-    float: left;
-    margin-left: 1%;
 }
-
+/* Text */
+.formHeading p{
+    color: black;
+    font-family: Familjen Grotesk;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+/* (Label + input) div */
+.elem-group{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+/* Name group; first and last name */
+#formGroup{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+/* All the labels */
 label {
-    display: block;
-    font-family: 'Nanum Gothic';
-    padding-bottom: 10px;
+    width: 50%;
     font-size: 1.25em;
+    text-align: left;
+    padding: 0.5rem;
+}
+/* All inputs */
+input,select{
+    width: 90%;
+    border-radius: 0.5rem;
+    height: 3rem;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 1rem;
+    border: 2px solid black;
 }
 
-input,
-select,
 textarea {
-    border-radius: 2px;
-    border: 2px solid #777;
+    border-radius: 0.3rem;
+    border: 2px solid black;
     box-sizing: border-box;
     font-size: 1.25em;
     font-family: 'Nanum Gothic';
-    width: 100%;
+    width: 90%;
     padding: 10px;
-}
-
-div.elem-group.inlined input {
-    width: 95%;
-    display: inline-block;
-}
-
-textarea {
-    height: 250px;
-}
-
-hr {
-    border: 1px dotted #ccc;
 }
 
 button {
     height: 50px;
-    background: orange;
+    background: crimson;
     border: none;
     color: white;
     font-size: 1.25em;
     font-family: 'Nanum Gothic';
-    border-radius: 4px;
+    border-radius: 0.5rem;
     cursor: pointer;
+    width: 60%;
+    margin-top: 2rem;
+
 }
 
 button:hover {
     border: 2px solid black;
+    background: #700511;
+    transition: 1s;
 }
