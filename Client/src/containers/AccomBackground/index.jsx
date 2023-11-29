@@ -6,10 +6,10 @@ import './accomStyle.css'
 const AccomBackground = () => {
   return (
     <div className="imageWrapperA">
-    <div className="small-containerA">
-      <h1 className='textA'>Comfortable home away from home</h1>
+      <div className="small-containerA">
+        <h2 className='textA'>Accomodations</h2>
+      </div>
     </div>
-  </div>
   )
 }
 

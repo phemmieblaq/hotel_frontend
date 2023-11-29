@@ -1,21 +1,10 @@
+/* Entire Accomodation section */
 .container {
-    display: inline-grid;
-    grid-template-areas:
-      "backgrounder "
-      "displayer "
-      /* "bedroom "
-      "bedroom "
-      "closet "     */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-  
-#displayer {
-   grid-area: displayer;
-}
-
-#backgrounder {
-  grid-area: backgrounder;
-}
-  
 
 .textLogoWrapper {
     display: flex;
@@ -24,14 +13,16 @@
 }
 
 .card-wrapper {
-    width: 100%;
+    width:100%;
+    padding: 1rem;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: 100px;
-    /* border:1px solid red; */
-    margin-bottom: 107px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: auto;
+    background-color: grey;
 }
+
+
 
 .map-wrapper {
     width: 100%;

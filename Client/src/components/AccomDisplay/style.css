@@ -1,27 +1,21 @@
 .bigDiv {
-  display: flex;
-  gap: 20px;
-  /* Adjust the gap according to your spacing preference */
   width: 100%;
   height: 70vh;
+  display: flex;
   border: 1px solid #ccc;
-  /* Optional border for visualization */
-  padding: 20px;
+  padding: 1rem;
+  justify-content: space-around;
   background-color: #E8E4C9;
-  /* Optional padding for visualization */
 }
 
 .displayImage {
-  flex: 1;
-  /* Takes up available space */
-  padding: 60px;
-  /* background-color: red; */
+  width: 40%;
+  /* padding: 4rem; */
 }
 
 .displayInfo {
-  flex: 1;
-  /* Takes up available space */
-  padding: 20px;
+  width: 60%;
+  padding: 2rem;
 }
 
 .AdTitle {

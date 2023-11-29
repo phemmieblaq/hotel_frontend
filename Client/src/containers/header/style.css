@@ -1,14 +1,17 @@
+/* Entire Nav Bar */
 .allWrapper {
     display: flex;
-    max-width: 100%;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
     height: 10vh;
-    padding: 80px 100px 40px 100px;
-    justify-content: center;
-    align-items: center;
-    background: #FFF;
+    padding: 2rem;
+    /* background: #FFF; */
+    background-color: gray;
+    color: #2C2B2B;
 }
 
+/* Div to hold logo + links + contacts + Button + Burger*/
 .innerWrapper {
     display: flex;
     justify-content: space-between;
@@ -16,50 +19,118 @@
     align-items: center;
 }
 
+/* Logo */
 .logoWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
-
+    text-transform: uppercase;
 }
 
-h1 {
-    color: #363736;
-    font-family: Familjen Grotesk;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-
-}
-
+/* Links */ 
 .linkWrapper {
+    width: 50%;
     display: flex;
-    align-items: center;
+    justify-content: space-around;
+    gap: 24px;
+}
+/* Links - Mobile */ 
+.nav-active{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
     gap: 24px;
 }
 
-.linkWrapper p {
-    color: #4B4848;
-    font-family: Familjen Grotesk;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
+/* Holds contact + Button */
 .subWrapper {
     display: flex;
     align-items: center;
     gap: 48px;
 }
 
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+}
+
+/* 'Crown hotel' in the logo */
+.logoWrapper h1 {
+    font-family: Familjen Grotesk;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+/* 'Log in' after the Links */
 .text {
-    color: #2C2B2B;
     font-family: Familjen Grotesk;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+/* When it gets to this width links width shrinks, so logo doesn't change */
+@media screen and (max-width:1350px) {
+    .logoWrapper h1{
+        display: none;
+    }
+    .linkWrapper {
+        width: 60%;
+    }
+}
+
+/* Mobile */
+@media (max-width:760px) {
+    /* Bring the 'Crown Hotel' back */
+    .logoWrapper h1{
+        display: block;
+    }
+    /* Hide contact + Button */
+    .subWrapper {
+        display: none;
+    }
+    /* Show the burger menu */
+    .burger{
+        display: block;
+    }
+    /* Bring the links to full view */
+    .linkWrapper {
+        position: absolute;
+        right: 0px;
+        height: 90vh;
+        top: 10vh;
+        background-color: ghostwhite;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+        transform: translate(0%);
+        transition: transform 0.5s ease-in;
+    }
+    .nav-active{
+        position: absolute;
+        right: 0px;
+        height: 90vh;
+        top: 10vh;
+        background-color: ghostwhite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+        transition: transform 0.5s ease-in;
+        transform: translate(0);
+    }
+    
 }

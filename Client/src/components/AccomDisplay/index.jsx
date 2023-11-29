@@ -1,14 +1,7 @@
 import React from 'react'
 import Button from '../../components/button'
 import MiniDescription from '../../components/miniDescription'
-import wifi from '../../assets/svg/wifi.svg'
-import minibar from '../../assets/svg/minibar.svg'
-import balcony from '../../assets/svg/balcony.svg'
-import bath from '../../assets/svg/bath.svg'
-import coffee from '../../assets/svg/coffee.svg'
-import house from '../../assets/svg/house.svg'
-import people from '../../assets/svg/people.svg'
-import bed from '../../assets/svg/bed.svg'
+
 
 import './style.css'
 
@@ -28,16 +21,14 @@ function AccomDisplay({obj}) {
           {/* Highlights */}
           <div className='adHighlights'>
             <h5>Highlights</h5>
-            {/* {obj.display.highlights?.map((innerObj)=>(
-              <MiniDescription image={innerObj.img} text={innerObj.name}/>
-            ))} */}
-            
-
+            {obj.display.highlights?.map((innerObj, index)=>(
+              <MiniDescription key={index} image={innerObj.img} text={innerObj.name}/>
+            ))}
           </div>
           <div className='adRoomDetails'>
             <h5>Room Details</h5>
-            {obj.display.room?.map(({img, name})=>(
-              <MiniDescription image={img} text={name}/>
+            {obj.display.room?.map((innerObj, index)=>(
+              <MiniDescription key={index} image={innerObj.img} text={innerObj.name}/>
             ))}
           </div>
         </div>

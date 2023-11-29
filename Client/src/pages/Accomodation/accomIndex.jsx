@@ -8,7 +8,7 @@
 
 import React from 'react'
 
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import './style.css';
 import HotelCard from '../../components/cards/hotelCard';
 import MapContainer from '../../containers/map';
@@ -17,7 +17,6 @@ import AccomBackground from '../../containers/AccomBackground'
 import AccomDisplay from '../../components/AccomDisplay'
 import {cards} from './index'
 
-console.log(cards)
 
 
 const Accomodation = () => {
@@ -25,20 +24,20 @@ const Accomodation = () => {
   const [value, setValue] = useState(0); // used to see which card was clicked
 
   return (
-    // Container for the whole Home Component
-    <div class="container">
+    // Container for the whole Accomodation Component
+    <div className="container">
 
-      <div id="backgrounder"> <AccomBackground/> </div>
+      {/* Background with image */}
+      <AccomBackground/>
 
-      
-      <div id="displayer"> <AccomDisplay obj={cards[value]}/> </div>
-
+      {/* Changes depending on what card was clicked */}
+      <AccomDisplay obj={cards[value]}/>
 
       {/* Div for the Hotel room cards shown on the landing page */}
       <div className="card-wrapper">
         {cards?.map((obj, index)=>(
           // <HotelCard/>
-          <HotelCard setValue={setValue} num={index} title={obj.card.type} feet={obj.card.feet} noBeds={obj.card.noBeds}/>
+          <HotelCard key={index} setValue={setValue} num={index} title={obj.card.type} feet={obj.card.feet} noBeds={obj.card.noBeds}/>
         ))}
       </div>
 

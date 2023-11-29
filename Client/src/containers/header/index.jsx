@@ -7,6 +7,7 @@
 */
 
 import React from 'react'
+import {useState } from 'react';
 import MainCrownLogo from '../../assets/svg/MainCrownLogo.svg'
 import ActiveNav from '../../components/activeNav'
 import Phoneblack from '../../../src/assets/icons/Phoneblack.svg';
@@ -16,9 +17,15 @@ import Button from '../../components/button';
 
 
 const Header = () => {
+    const [togClass, setTogClass] = useState('linkWrapper')
+
+    const handleClick = () =>{
+        setTogClass(togClass === 'linkWrapper' ? 'nav-active' : 'linkWrapper');
+    }
+
   return (
     // <div>
-        <div className="allWrapper">
+        <nav className="allWrapper">
             <div className="innerWrapper">
                 {/* Logo + Logo Name wrapper*/}
                 <div className="logoWrapper">
@@ -27,11 +34,11 @@ const Header = () => {
                 </div>
 
                 {/* Wrapper for the links in the nav bar */}
-                <div className="linkWrapper">
+                <div className={togClass}>
                     <ActiveNav path='/'text='Home'/> 
-                    <ActiveNav path='/accomodation'text='Acccomodation'/> 
+                    <ActiveNav path='/accomodation'text='Rooms'/> 
                     <ActiveNav path='/experience' text='Experience'/> 
-                    <ActiveNav path='/events' text='Event Rooms'/>
+                    <ActiveNav path='/events' text='Event'/>
                     <ActiveNav path='/faqs' text='FAQs'/>
                 </div>
 
@@ -56,8 +63,15 @@ const Header = () => {
                         <Button title='Book Now'/>
                     </div>
                 </div>
+
+                {/* Burger for mobile*/}
+                <div className='burger' onClick={handleClick}>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             </div>
-        </div>
+        </nav>
     // </div>
   )
 }

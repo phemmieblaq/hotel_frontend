@@ -17,9 +17,9 @@ const LandingPageLayout = () => {
         </header>
 
         {/* Body */}
-        <body>
+        <main>
           <Outlet/>
-        </body>
+        </main>
 
         {/* FAQ */}
         <div className="faq-section">

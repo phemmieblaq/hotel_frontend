@@ -55,7 +55,8 @@ export const cards = [
         <br/>
         The rooms at this luxury hotel in Nice are elegantly and thoughtfully; designed, maximizing space, light. 
         Choose a higher floor with a private terrace for a view of the whole city`,
-            highlights: h1
+            highlights: h1,
+            room: h1
         }
 
     },
@@ -74,7 +75,8 @@ export const cards = [
         <br/>
         The rooms at this luxury hotel in Nice are elegantly and thoughtfully; designed, maximizing space, light. 
         Choose a higher floor with a private terrace for a view of the whole city`,
-            highlights: h2
+            highlights: h2,
+            room: h1
         }
     },
     {
@@ -92,25 +94,27 @@ export const cards = [
         <br/>
         The rooms at this luxury hotel in Nice are elegantly and thoughtfully; designed, maximizing space, light. 
         Choose a higher floor with a private terrace for a view of the whole city`,
-            highlights: h2
+            highlights: h2,
+            room: h2
         }
     },
-    // {
-    //     card: {
-    //         type: 'Standard Twin ',
-    //         feet: '20 sqm / 215 sqft',
-    //         noBeds: 1
-    //     },
+    {
+        card: {
+            type: 'Standard Twin ',
+            feet: '20 sqm / 215 sqft',
+            noBeds: 1
+        },
 
-    //     display: {
-    //         title: 'Standard Twin ',
-    //         text: `The rooms at this luxury hotel in Nice are elegantly and thoughtfully! designed, maximizing space, light. 
-    //     Choose a higher floor with a private terrace for a view of the whole city
-    //     <br/>
-    //     <br/>
-    //     The rooms at this luxury hotel in Nice are elegantly and thoughtfully; designed, maximizing space, light. 
-    //     Choose a higher floor with a private terrace for a view of the whole city`,
-    //         highlights: h2
-    //     }
-    // }
+        display: {
+            title: 'Standard Twin ',
+            text: `The rooms at this luxury hotel in Nice are elegantly and thoughtfully! designed, maximizing space, light. 
+                    Choose a higher floor with a private terrace for a view of the whole city
+                    <br/>
+                    <br/>
+                    The rooms at this luxury hotel in Nice are elegantly and thoughtfully; designed, maximizing space, light. 
+                    Choose a higher floor with a private terrace for a view of the whole city`,
+            highlights: h2,
+            room: h2
+        }
+    }
 ];
