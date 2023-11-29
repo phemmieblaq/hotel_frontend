@@ -1,13 +1,9 @@
 // Import all the svg's needed
-import MiniDescription from '../../components/miniDescription'
-import wifi from '../../assets/svg/wifi.svg'
 import minibar from '../../assets/svg/minibar.svg'
 import balcony from '../../assets/svg/balcony.svg'
 import bath from '../../assets/svg/bath.svg'
 import coffee from '../../assets/svg/coffee.svg'
-import house from '../../assets/svg/house.svg'
-import people from '../../assets/svg/people.svg'
-import bed from '../../assets/svg/bed.svg'
+
 // Full ammenities supperior rooms
 const h1 = [
     {

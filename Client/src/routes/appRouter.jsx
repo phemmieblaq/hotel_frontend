@@ -1,10 +1,11 @@
 import React, { Suspense } from "react";
-import { Toaster } from "react-hot-toast";
+// import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPageLayout from "../containers/layouts/mainPage";
 import Home from "../pages/home";
 import Accomodation from "../pages/Accomodation/accomIndex";
 import Book from "../pages/Book/book";
+import Events from "../pages/Events";
 
 const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ const AppRouter = () => {
             <Route path="/" element={<Home />} />
             <Route path="/accomodation" element={<Accomodation/>} />
             <Route path="/book" element={<Book/>} />
+            <Route path="/events" element={<Events/>} />
           </Route>
         </Routes>
         {/* <Toaster

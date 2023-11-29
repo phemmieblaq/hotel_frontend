@@ -28,7 +28,7 @@ const Accomodation = () => {
     <div className="container">
 
       {/* Background with image */}
-      <AccomBackground/>
+      <AccomBackground title='Accomodation'/>
 
       {/* Changes depending on what card was clicked */}
       <AccomDisplay obj={cards[value]}/>

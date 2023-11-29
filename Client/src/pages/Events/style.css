@@ -1,0 +1,12 @@
+.eventsBigDivs{
+    background-color: rgb(246, 246, 246);
+}
+.eventCardContainer{
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+
+}

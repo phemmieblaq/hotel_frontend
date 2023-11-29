@@ -1,13 +1,12 @@
 import React from 'react'
-import background from '../../assets/png/background.jpeg';
 import './accomStyle.css'
 
 
-const AccomBackground = () => {
+const AccomBackground = ({title}) => {
   return (
     <div className="imageWrapperA">
       <div className="small-containerA">
-        <h2 className='textA'>Accomodations</h2>
+        <h2 className='textA'>{title}</h2>
       </div>
     </div>
   )

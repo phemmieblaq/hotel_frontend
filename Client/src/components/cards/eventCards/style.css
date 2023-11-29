@@ -1,0 +1,54 @@
+/* Container */
+.eventCardWrapper{
+    width: 80vw;
+    height: 60vh;
+    display: flex;
+    border-radius: 3rem;
+    background-color: white;
+
+}
+
+/* image */
+.eventCardImageDiv{
+    width: 50%;
+    height: auto;
+    border-radius: 3rem 0rem 0rem 3rem;
+}
+.eventCardImage{
+    width: 100%;
+    height: 100%;
+    border-radius: 3rem 0rem 0rem 3rem;
+
+}
+
+/* Info */
+.eventCardInfo{
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+.eventCardInfo h2{
+    font-size: 2rem;
+    width: 100%;
+    padding: 1rem;
+}
+.eventCardMiniDescription{
+    padding: 1rem;
+    width: 100%;
+}
+
+.eventCardSeatingPlan{
+    padding: 1rem;
+    width: 100%;
+}
+.eventCardSeatingPlan h3{
+    padding: 0.5rem;
+    letter-spacing: 2px;
+}
+.eventCardSeatingPlan p{
+    padding: 0.3rem;
+}
