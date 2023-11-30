@@ -1,34 +1,28 @@
 
 
-a {
-  color:  #4B4848;
+a > .linkText{
+  
   font-family: Familjen Grotesk;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width: 100%;
+  white-space: nowrap;
+  
 }
 
-a.active {
- 
-  color: #700511;
-    border-bottom: 4px solid #700511;
-   
-    width: 56px;
+a{
+  display: flex;
+  text-decoration: none;
+  font-family: Familjen Grotesk;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  color: var(--text-secondary, #4B4848);
+  white-space: nowrap;
+  
 }
 
-a::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background-color: blue;
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  transition: width 0.3s ease;
-}
-
-a.active::after {
-  width: 56px;
-}

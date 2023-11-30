@@ -17,9 +17,12 @@ import broads from '../../assets/png/broads.png'
 import garden from '../../assets/png/garden.png'
 import collection from '../../assets/png/collection.png'
 import NorwichAreas from '../../features/norwich';
+// import {  useNavigate } from "react-router-dom";
 
 
 const Home = () => {
+  
+
   return (
     <div className='main-container '>
         <div className="textLogoWrapper">

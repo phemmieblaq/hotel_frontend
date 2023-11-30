@@ -15,7 +15,7 @@ const Accordion = ({
     const [collapsed, setCollapsed] = useState(false);
     
   return (
-    <div className="all-container">
+    <div className="all-containers">
     <div className="small-wrapper">
         <p className="question">
             {question}

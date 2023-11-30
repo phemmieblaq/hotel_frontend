@@ -13,8 +13,10 @@ import copyright from '../../../src/assets/icons/copyright.svg';
 
 
 import './style.css';
+import { useMediaQuery } from '@mui/material';
 
 const Footer = () => {
+  const matches = useMediaQuery("(max-width:800px)");
   return (
     <div>
       <div className="wrapper">
@@ -87,11 +89,27 @@ const Footer = () => {
               <div className="contact">
               <p className="email"> reservatiion@crownhotel.co.uk</p>
               </div>
+              
             </div>
+            {matches && (
+                <div className="socials-wrapper">
+                <div className="icon-wrapper">
+                  <img src={facebook} alt="" />
+                </div>
+                <div className="icon-wrapper">
+                  <img src={instagram} alt="" />
+                </div>
+                <div className="icon-wrapper">
+                  <img src={twitter} alt="" />
+                </div>
+
+              </div>
+            )}
           </div>
           
           </div>
         </div>
+
         <div className="copyright-wrapper">
         <div className="copyright">
           <div className="icon-wrapper">

@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   font-family: Familjen Grotesk;
-  background-color: #ffff;
+  background-color:  #FAFAFA;
 }
 *,
 *::before,
@@ -14,6 +14,7 @@ html {
 body, html {
   height: 100%;
   margin: 0;
+  overflow-x:hidden ;
 }
 
 

@@ -70,7 +70,7 @@ width:100%;
 
 
 .custom-div {
-
+  width:100%;
   display: flex;
   flex-flow: column;
   gap: clamp(8px, 0.8px, 12px);
@@ -97,6 +97,7 @@ height:auto;
   outline: none;
   font-weight: 400;
   font-size: 14px;
+  width:100%;
   
 
   &::-webkit-outer-spin-button,
