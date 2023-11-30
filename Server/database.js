@@ -16,6 +16,14 @@ async function setSchema() {
     }
 }
 
+// ========================================== Rooms ========================================================
+// Get info for the cards in Accomodation and Home
+async function getCardInfo(){
+    const qry = `
+    SELECT *
+    FROM rates;
+`
+}
 
 // Get all bookings from a 'date' for the next 'interval' days
 async function getRoomBookings(date, interval){
