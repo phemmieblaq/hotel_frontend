@@ -7,7 +7,7 @@ import wifi from '../../../assets/svg/wifi.svg';
 
 import './style.css'
 import Button from '../../button';
-const HotelCard = ({title ='Deluxe Room' , price='$45/night'}) => {
+const HotelCard = ({onClick=()=>{},title ='Deluxe Room' , price='$45/night', size,noOfPeople, accomodation}) => {
   return (
     <div className='Wrapper'>
         <div className="image-wrapper">
@@ -22,14 +22,14 @@ const HotelCard = ({title ='Deluxe Room' , price='$45/night'}) => {
                     <img src={house} alt="" /> 
                    
                     </div>
-                    <p> 20 sqm / 215 sqft</p>
+                    <p> {size}</p>
                 </div>
                 <div className="icon-text">
                     <div className="image-wrapper">
                     <img src={people} alt="" /> 
                    
                     </div>
-                    <p> 1 Adult</p>
+                    <p> {noOfPeople} {noOfPeople > 1?'Adults':'Adult'}</p>
                 </div>
 
                  </div>
@@ -61,12 +61,13 @@ const HotelCard = ({title ='Deluxe Room' , price='$45/night'}) => {
 
         <div className="lastWrapper">
             <p className="price">
-                {price}
+            &#163;{price}/night
             </p>
             <div className="buttonWrapper">
             <Button
-      title ='Book Now'
-      secondary/>
+      title ={accomodation? 'View Details':'Book Now'}
+      secondary
+      onClick={onClick}/>
       </div>
         </div>
 

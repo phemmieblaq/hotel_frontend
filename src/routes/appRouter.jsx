@@ -3,6 +3,15 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import LandingPageLayout from "../containers/layouts/mainPage";
 import Home from "../pages/home";
+import Experience from "../pages/experience";
+import EventRooms from "../pages/event";
+import Accomodation from "../pages/accomodation";
+import SignUp from "../pages/authPages/signUp";
+import SignIn from "../pages/authPages/signIn";
+import ForgotPassword from "../pages/authPages/forgotPassword";
+import DetailsPage from "../pages/accomodation/details/details";
+import PaymentForm from "../containers/paymentForm";
+import BookingForm from "../containers/bookingForm";
 const AppRouter = () => {
 
 return (
@@ -12,7 +21,22 @@ return (
     <Router> 
       <Routes>
       <Route path="/" element={ <LandingPageLayout />}>
+        
+    
                   <Route index element={<Home />} />
+                 
+
+                  <Route path="experience" element={<Experience />} />
+                  <Route path="events" element={<EventRooms />} />
+                  <Route path="test" element={<BookingForm />} />
+                  <Route path="signup" element={<SignUp />} />
+                  <Route path="signin" element={<SignIn />} />
+                  <Route path="forgotpassword" element={<ForgotPassword />} />
+      
+                  <Route path="accomodation" element={<Outlet />}>
+                <Route index element={<Accomodation />} />
+                <Route path=":roomCode" element={<DetailsPage />} />
+              </Route>
                   </Route>     
       </Routes>
        <Toaster
