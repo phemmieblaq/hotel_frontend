@@ -19,5 +19,12 @@ export const accomodation = [{
             roomCode: 122343384, 
             noOfPeople: 3,
              price: 100 },
+             {
+              image: 'image1.jpg',
+              title: 'Junior suite', 
+              size: '20 sqm / 215 sqft',
+              roomCode: 122343384, 
+              noOfPeople: 3,
+               price: 100 },
              
 ]

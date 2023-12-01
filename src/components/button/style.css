@@ -1,5 +1,6 @@
 .mainButtonWrapper{
     width:100%;
+    white-space: nowrap;
 }
 
 .primary{

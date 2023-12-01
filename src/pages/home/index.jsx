@@ -29,9 +29,10 @@ const Home = () => {
             <MainBackground/>
     
         
-        <h1 className='title-wrapper'>Choose your perfect sanctuary</h1>
+        <h1 className='first-title-wrapper'>Choose your perfect sanctuary</h1>
         </div>
         <div className="card-wrapper">
+       <HotelCard/>
        <HotelCard/>
        <HotelCard/>
        <HotelCard/>
@@ -40,7 +41,9 @@ const Home = () => {
        
         <h2 className='title-wrapper'>Location</h2>
         <div className="map-wrapper">
+          <div className="mapContainer">
         <MapContainer />
+        </div>
         <div className="right-container">
             <div className="heading-wrapper">
             Crown Hotel
@@ -98,13 +101,13 @@ const Home = () => {
             </div>
 
       </div>
-      <div className="first-right-container-picture">
+      <div className="second-right-container-picture">
             <img src={Bar} alt="gym" className='bar-picture' />
             <div className="image-caption">
               <h4 className="facility-heading">
                 Bar
               </h4>
-              <p>We have variety of drinks available for you to relax and connect with others in our bar. connecting people from different walks of life </p>
+              <p>We have variety of drinks available for you to relax and connect with others in our bar. le from different walks of life </p>
 
 
 
