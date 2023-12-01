@@ -1,0 +1,94 @@
+.mainButtonWrapper{
+    width:100%;
+    white-space: nowrap;
+}
+
+.primary{
+    display: inline-flex;
+height: 48px;
+padding: 12px 24px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 12px;
+background:  #700511;
+
+max-width: 100%;
+width: 100%;
+cursor: pointer;
+}
+.primaryWhite{
+    display: inline-flex;
+height: 48px;
+padding: 12px 24px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 12px;
+background: #FAFAFA;
+
+max-width: 100%;
+width: 100%;
+cursor: pointer;
+}
+.primary > p{
+    color: #FAFAFA;
+font-family: DM Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.primaryWhite > p{
+    color: var(--text-primary, #2C2B2B);
+    font-family: Familjen Grotesk;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.secondary{
+    display: inline-flex;
+padding: 14px 40px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 12px;
+border: 2px solid  #700511;
+cursor: pointer;
+
+background: #ffff;
+max-width:100%;
+width: 100%;
+}
+.secondaryWhite{
+    display: inline-flex;
+padding: 14px 40px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+border-radius: 12px;
+border: 2px solid #FFF;
+background:  #700511;
+cursor: pointer;
+
+
+max-width:100%;
+width: 100%;
+}
+.secondary > p{
+    color:  #700511;
+font-family: DM Sans;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.secondaryWhite > p{
+    color: #FAFAFA;
+font-family: Familjen Grotesk;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}

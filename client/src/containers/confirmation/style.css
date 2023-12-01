@@ -1,0 +1,84 @@
+.mainBookingWrapper{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 250px;
+    @media screen and (max-width: 800px) {
+        margin-top:182px;
+      
+        }
+    
+
+}
+
+.bookWrapper{
+    border-radius: 12px;
+    background: #FFF;
+    max-width: 716px;
+    width: 100%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding:80px 
+    
+
+}
+.tickWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+.mainHeading{
+    color: var(--text-primary, #2C2B2B);
+text-align: center;
+font-family: Familjen Grotesk;
+font-size: 56px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-bottom: 8px;
+@media screen and (max-width: 800px) {
+    font-size: 28px;
+    
+      }
+
+}
+.bookingContent{
+    color: #2D2F2D;
+font-family: Familjen Grotesk;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom: 48px;
+max-width: 586px;
+@media screen and (max-width: 800px) {
+    font-size: 14px;
+    
+      }
+
+}
+.splitButton{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 586px;
+    gap:56px;
+    margin-bottom: 89px;
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+      gap:24px;
+      
+        }
+        @media screen and (max-width: 800px) {
+            width: 100%;
+            
+              }
+}
+.splitButton div{
+    max-width: 256px;
+}
