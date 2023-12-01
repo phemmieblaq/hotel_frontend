@@ -1,6 +1,12 @@
 .mainAuthWrapper{
     width:100%;
     margin-top: 250px;
+
+    @media screen and (max-width: 800px) {
+        margin-top:182px;
+      
+        }
+      
  
  
 }

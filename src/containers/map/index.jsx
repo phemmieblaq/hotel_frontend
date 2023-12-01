@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 
 const libraries = ['places'];
 const mapContainerStyle = {
-  width: '50vw',
+  width: '100%',
   height: '50vh',
 };
 const center = {

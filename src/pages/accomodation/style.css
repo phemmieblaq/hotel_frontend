@@ -1,18 +1,22 @@
 .cardWrapper{ 
     width: 100%;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     padding-inline: 100px;
-    gap: 24px;
+  
     margin-bottom: 80px;
   
-    @media screen and (min-width: 1900px) {
-      grid-template-columns: auto auto auto auto;
+    @media screen and (min-width: 1350px) {
+      grid-template-columns: auto auto auto ;
+      gap: 24px;
+    }
+    @media screen and (min-width: 900px) {
+      grid-template-columns: auto auto  ;
       gap: 24px;
     }
   
     @media screen and (max-width: 700px) {
-      grid-template-columns: none;
+      grid-template-columns: auto;
       gap: 24px;
     }}
 

@@ -6,6 +6,11 @@
     align-items: center;
     overflow: hidden;
     max-height:540px;
+    @media screen and (max-width: 800px) {
+    
+       
+        flex-direction: column;
+       }
 
 }
 .left-container-image,.right-container-image{

@@ -1,4 +1,6 @@
 import React, { useRef, useState } from "react";
+import { HiChevronDown, HiChevronUp } from "react-icons/hi";
+
 
 
 
@@ -7,48 +9,34 @@ import React, { useRef, useState } from "react";
 const DropDownInput = ({
     setValue,
     value,
-    referralOptions,
+    Options,
     errorMessage,
     setErrorMessage,
     label,
+    initialValue,
     register,
     name,
     handleReferralChange,
 }) => {
+    const [selectedValue, setSelectedValue] = useState(initialValue);
+
+
+
+  
     const [open, setOpen] = useState(false);
-  const [placeholder, setPlaceholder] = useState("Please select an option");
-
-  const inputRef = document.getElementById("custom-dropdown-input");
-
+ 
   const handleOpenDropdown = () => {
     setOpen(!open);
   };
-
-  const handleOptionClick = (value) => {
+  const handleSelect = (selected) => {
+    setSelectedValue(selected);
+   
     setOpen(false);
-
-    if (value === "Other") {
-      inputRef.focus();
-      handleReferralChange("");
-      setErrorMessage("");
-      setPlaceholder("Please enter how you found us");
-    } else {
-      inputRef.blur();
-      setErrorMessage("");
-      handleReferralChange(value);
-      setPlaceholder("Please select an option");
-    }
   };
 
-  const handleChange = (e) => {
-    let value = e.target.value;
-    handleReferralChange(value);
-  };
+ 
 
-  const handleInputClick = () => {
-    setPlaceholder("Please select an option");
-  };
-
+  
   return (
     <div className={`custom-div `}
       key="DropDownInput"
@@ -63,34 +51,41 @@ const DropDownInput = ({
 
       <div className={`InputWrapper ${errorMessage ? 'error' : ''}`}>
       <div
+       onClick={handleOpenDropdown}
           style={{
             width: "100%",
             display: "flex",
+            justifyContent:'space-between',
+            alignItems: 'center',
             height: "100%",
           }}>
 <div className="showList">
-{register ? (
-              <input className="Input"
-                id="custom-dropdown-input"
-                name={name}
-                onChange={handleChange}
-                placeholder={placeholder}
-                onClick={handleInputClick}
-                ref={inputRef}
-                {...register(name)}
-              />
+{selectedValue}
+</div>
+<div className='ShowListIcon'>
+{open ? (
+              <HiChevronUp size={24} color="#4E5152" />
             ) : (
-              <nput className="Input"
-                name={name}
-                onChange={handleChange}
-                value={value}
-                placeholder={placeholder}
-                onClick={handleInputClick}
-              />
+              <HiChevronDown size={24} color="#4E5152" />
             )}
 </div>
+
       
       </div>
+      {open && (
+          <>
+            <div className='InvisibleBackDrop' onClick={() => setOpen(false)} />
+            <div className='DropDown'>
+              <div className="ListItems">
+                {Options.map((option, index) => (
+                  <div className='ListItem' key={index} onClick={() => handleSelect(option)} >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

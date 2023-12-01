@@ -12,6 +12,7 @@ import ForgotPassword from "../pages/authPages/forgotPassword";
 import DetailsPage from "../pages/accomodation/details/details";
 import PaymentForm from "../containers/paymentForm";
 import BookingForm from "../containers/bookingForm";
+import Confirmation from "../containers/confirmation";
 const AppRouter = () => {
 
 return (
@@ -28,10 +29,13 @@ return (
 
                   <Route path="experience" element={<Experience />} />
                   <Route path="events" element={<EventRooms />} />
-                  <Route path="test" element={<BookingForm />} />
+                  <Route path="test" element={<Confirmation />} />
                   <Route path="signup" element={<SignUp />} />
                   <Route path="signin" element={<SignIn />} />
                   <Route path="forgotpassword" element={<ForgotPassword />} />
+                  <Route path="booking" element={<BookingForm />} />
+                  <Route path="payment" element={<PaymentForm />} />
+                  <Route path="booking-confirmation" element={<Confirmation />} />
       
                   <Route path="accomodation" element={<Outlet />}>
                 <Route index element={<Accomodation />} />

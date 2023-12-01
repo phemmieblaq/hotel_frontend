@@ -4,7 +4,8 @@ import AuthLayout from '../layouts/auth'
 import Button from '../../components/button'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { loginSchema } from '../../pages/authPages/authSchema'
+
+import { paymentSchema } from './paymentSchema'
 
 const PaymentForm = () => {
     const {
@@ -12,7 +13,7 @@ const PaymentForm = () => {
         register,
         formState: { errors },
       } = useForm({
-        resolver: yupResolver(loginSchema),
+        resolver: yupResolver(paymentSchema),
       });
     
       const submitForm =(data)=>{
@@ -29,36 +30,37 @@ const PaymentForm = () => {
       >
         <form onSubmit={handleSubmit(submitForm)}>
         <InputWithLabel
-        label='Card number'
-        type='number'
-                name="cardNumber"
-                register={register}
-                errorMessage={errors.email?.message}/>
-      
-        
-         <InputWithLabel
         label='Name on card'
         type='text'
        
                 name="cardName"
                 register={register}
-                errorMessage={errors.password?.message}/>
+                errorMessage={errors.cardName?.message}/>
+        <InputWithLabel
+        label='Card number'
+        type='number'
+                name="cardNumber"
+                register={register}
+                errorMessage={errors.cardNumber?.message}/>
+      
+        
+         
 
                 <div className="splitDetails">
                 <InputWithLabel
         label='CVV'
-        type='text'
+        type='number'
        
-                name="cardName"
+                name="cvv"
                 register={register}
-                errorMessage={errors.password?.message}/>
+                errorMessage={errors.cvv?.message}/>
  <InputWithLabel
         label='Expiry date (MM/YY)'
-        type='date'
+        type='text'
        
-                name="cardDate"
+                name="expiryDate"
                 register={register}
-                errorMessage={errors.password?.message}/>
+                errorMessage={errors.expiryDate?.message}/>
 
                 </div>
               
