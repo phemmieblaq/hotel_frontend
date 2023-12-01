@@ -7,6 +7,7 @@
 */
 
 import React from 'react'
+import { useState, useEffect } from 'react';
 import MainBackground from '../../containers/mainBackground'
 import './style.css';
 import HotelCard from '../../components/cards/hotelCard';
@@ -14,6 +15,25 @@ import MapContainer from '../../containers/map';
 import location from '../../assets/svg/location.svg'
 
 const Home = () => {
+  const [hotelData, setHotelData] = useState([]);
+
+  useEffect(() => {
+    // Fetch hotel data from the backend when the component mounts
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/');
+        const data = await response.json();
+        setHotelData(data);
+      } catch (error) {
+        console.error('Error fetching hotel data:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array ensures the effect runs only once when the component mounts
+  console.log(hotelData);
+
+
   return (
     // Container for the whole Home Component
     <div>

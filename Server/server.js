@@ -1,56 +1,102 @@
 const express = require("express")
+const cors = require('cors');
+
 const app = express()
 const database = require("./database")
 
+// Use the cors middleware to allow requests from all origins
+app.use(cors());
 app.use(express.json())
 
+// // Use the pool for a general query
+// async function selectAllFrom(table) {
+//     try {
+//         const result = await database.pool.query(`SELECT * FROM ${table}`);
+//         console.log(result.rows);
+//     } catch (error) {
+//         console.error('Error in database operation:', error);
+//     }
+// }
 
-// Use the pool for a general query
-async function selectAllFrom(table) {
+// ========================================== Make a Booking ========================================================
+app.post("/book", async (req, res) => {
+    const email = req.body["email"]
+    const bCost = req.body["cost"]
+    const bOutstanding = req.body["outstanding"]
+    const bNotes = req.body["notes"]
+    const rClass = req.body["type"]
+    const checkIn = req.body["check_in"]
+    const checkOut = req.body["check_out"]
+
+
     try {
-      const result = await database.pool.query(`SELECT * FROM ${table}`);
-      console.log(result.rows);
+        // get the customer number from the email given
+        let response = await database.getCustomerNumber(email);
+        const cNo = response.rows[0].c_no;
+
+        // insert booking into booking table and get booking reference
+        response = await database.makeBooking(cNo, bCost, bOutstanding, bNotes)
+        const bRef = response.rows[0].b_ref;
+
+        // randomly get a room number of the type specified
+        response = await database.getRandomRoom(rClass)
+        const roomNo = response.rows[0].r_no;
+
+        // insert into roombooking table all info 
+        response = await database.makeRoomBooking(roomNo, bRef, checkIn, checkOut);
+
+        // console.log(response);
+        res.send(response)
     } catch (error) {
-      console.error('Error in database operation:', error);
+        console.error(error)
     }
-  }
-  
-app.post("/book", (req,res) =>{
-    console.log(req.body)
+
 })
 
-app.post("/", (req,res) =>{
+// ========================================== Create account Route - Post ========================================================
+app.post('/create_account', async (req, res) => {
     // Get the username and password from the json 
-    const username = req.body["username"]
-    const password = req.body["password"]
+    const name = req.body["name"]
+    const email = req.body["email"]
+    const address = req.body["address"]
+    const cardType = req.body["card_type"]
+    const cardExp = req.body["card_exp"]
+    const cardNo = req.body["card_no"]
+    const phoneNo = req.body["phone_no"]
 
-    // Log to see its the correct values
-    console.log("username: " + username + " Password: " + password)
+    try {
+        //  Insert into Data base
+        const response = await database.addNewCustomer(name, email, address, cardType, cardExp, cardNo, phoneNo)
 
-    // Insert statment
-    const insert = `insert into accounts values('${username}', '${password}')`
+        console.log(response);
+        res.send(response)
+    } catch (error) {
+        console.error(error)
+    }
 
-    res.send("recieved")
 
-    // Set schema path
 })
 
-app.get("/", async (req,res)=>{
+// ========================================== Home page - GET(Card Info) ========================================================
+app.get("/", async (req, res) => {
+    // // Set the search path
+    // await database.setSchema();
+
+    try {
+        //  Insert into Data base
+        let response = await database.getRatesForClass()
+        response = response.rows
+
+        console.log(response);
+        res.send(response)
+    } catch (error) {
+        console.error(error)
+    }
+
+})
+// ========================================== Managment - GET ========================================================
+app.get("/management", async (req, res) => {
     // Set the search path
-    await database.setSchema();
-
-    // Choose the table to select ALL data from
-    const table = "roombooking";
-
-    // Select all data
-    selectAllFrom(table);
-
-    // Send response
-    res.send("Request recieved:" + req.body)
-})
-
-app.get("/management", async (req,res)=>{
-     // Set the search path
     await database.setSchema();
 
     // Date from
@@ -98,6 +144,22 @@ app.get("/management", async (req,res)=>{
     console.log(data)
     console.log(res2)
 })
+// ========================================== Home Page - POST ========================================================
+app.post("/", (req, res) => {
+    // Get the username and password from the json 
+    const username = req.body["username"]
+    const password = req.body["password"]
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {console.log(`server listening at port ${PORT}`)});
+    // Log to see its the correct values
+    console.log("username: " + username + " Password: " + password)
+
+    // Insert statment
+    const insert = `insert into accounts values('${username}', '${password}')`
+
+    res.send("recieved")
+
+    // Set schema path
+})
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => { console.log(`server listening at port ${PORT}`) });
