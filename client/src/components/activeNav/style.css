@@ -1,0 +1,28 @@
+
+
+a > .linkText{
+  
+  font-family: Familjen Grotesk;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  white-space: nowrap;
+  
+}
+
+a{
+  display: flex;
+  text-decoration: none;
+  font-family: Familjen Grotesk;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  color: var(--text-secondary, #4B4848);
+  white-space: nowrap;
+  
+}
+
