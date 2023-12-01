@@ -29,8 +29,10 @@ line-height: normal;
 max-width:515px;
 @media screen and (max-width: 800px) {
     font-size: 40px;
-    text-align: left;
+    display: flex;
+   
   
+    max-width:100%;
     width:100%;
     }
     @media screen and (max-width: 400px) {

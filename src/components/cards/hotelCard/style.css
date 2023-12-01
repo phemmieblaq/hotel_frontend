@@ -1,6 +1,8 @@
 .Wrapper{
     padding: 24px;
     max-width: 397px;
+    flex-wrap: wrap;
+   
     display: flex;
     flex-direction: column;
     gap: 12px;

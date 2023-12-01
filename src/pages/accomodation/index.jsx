@@ -28,7 +28,7 @@ title='Accomodation'/>
       <LinkHeading
       mainHeading=' Comfort home away from home'
       content='The rooms at this luxury hotel in Nice are elegantly and thoughtfully designed, maximizing space, light . Choose a higher floor with a private terrace for a view of the whole city'/>
-      <div className="cardWrapper">
+      <div className="mainCardWrapper">
         {accomodation?.map((el,index)=>(
           <div className='singleCardWrapper' key={index}>
              < HotelCard

@@ -1,28 +1,21 @@
-.cardWrapper{ 
+.mainCardWrapper{ 
     width: 100%;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 40px;
+   
+    
+ 
+   
     padding-inline: 100px;
   
     margin-bottom: 80px;
   
-    @media screen and (min-width: 1350px) {
-      grid-template-columns: auto auto auto ;
-      gap: 24px;
-    }
-    @media screen and (min-width: 900px) {
-      grid-template-columns: auto auto  ;
-      gap: 24px;
-    }
+    
+    
   
-    @media screen and (max-width: 700px) {
-      grid-template-columns: auto;
-      gap: 24px;
-    }}
-
-  .singleCardWrapper{
-    width:100%;
-  }
+}
   .button_Wrapper{
     width:100%;
    display: flex;

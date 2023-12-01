@@ -12,7 +12,7 @@ export const headerLink = [
     title :'Event Rooms'
 }, 
 {
-    path:'/reservation',
+    path:'/reservations',
     title :'Reservations'
 }, ]
 

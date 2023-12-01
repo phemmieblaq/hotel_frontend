@@ -13,6 +13,7 @@ import DetailsPage from "../pages/accomodation/details/details";
 import PaymentForm from "../containers/paymentForm";
 import BookingForm from "../containers/bookingForm";
 import Confirmation from "../containers/confirmation";
+import Reservation from "../pages/reservation";
 const AppRouter = () => {
 
 return (
@@ -29,7 +30,8 @@ return (
 
                   <Route path="experience" element={<Experience />} />
                   <Route path="events" element={<EventRooms />} />
-                  <Route path="test" element={<Confirmation />} />
+                  <Route path="test" element={<Reservation />} />
+                  <Route path="reservations" element={<Reservation />} />
                   <Route path="signup" element={<SignUp />} />
                   <Route path="signin" element={<SignIn />} />
                   <Route path="forgotpassword" element={<ForgotPassword />} />
