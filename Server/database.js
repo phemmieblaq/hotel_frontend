@@ -20,7 +20,7 @@ async function setSchema() {
 async function addNewCustomer(c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno, c_phoneno){
     const qry = `
         INSERT INTO customer (c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno, c_phoneno)
-        VALUES ('${c_name}', '${c_email}', '${c_address}', '${c_cardtype}', '${c_cardexp}', '${c_cardno}', '${c_phoneno}');
+        VALUES ('${c_name}', '${c_email}', '${c_address}', '${c_cardtype}', '${c_cardexp}', '${c_cardno}', '${c_phoneno}') RETURNING c_no;
     `
     let response = null;
     try{
@@ -30,6 +30,21 @@ async function addNewCustomer(c_name, c_email, c_address, c_cardtype, c_cardexp,
     }
     catch (error) {
         response = "Error Adding Customer: " + error;
+    }
+    return response
+}
+
+async function addIntoLogin(c_no, c_password){
+    const qry = `insert into login values(${c_no},'${c_password}');`;
+
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error Adding Into Login Table: " + error;
     }
     return response
 }
@@ -142,10 +157,29 @@ async function getAllCheckOutRooms(){
     }
 }
 // ========================================== Booking ========================================================
-
 async function makeBooking(c_no, b_cost, b_outstanding, b_notes){
     const qry = `INSERT INTO booking (c_no, b_cost, b_outstanding, b_notes)
     values (${c_no}, ${b_cost}, ${b_outstanding}, '${b_notes}') RETURNING b_ref;`
+
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error Making booking: " + error;
+    }
+    return response
+}
+
+// occupied, cleaned, not available, available
+
+// ========================================== RoomBooking ========================================================
+
+// insert into roomBooking
+async function makeRoomBooking(r_no, b_ref, checkin, checkout){
+    const qry = `insert into roombooking values (${r_no}, ${b_ref}, '${checkin}', '${checkout}');`
 
     let response = null;
     try{
@@ -177,13 +211,11 @@ async function getRoomBookings(date, interval){
         console.error("Error getting room bookings:", error);
     }
 }
-// occupied, cleaned, not available, available
 
-// ========================================== RoomBooking ========================================================
+// ========================================== Events ========================================================
 
-// insert into roomBooking
-async function makeRoomBooking(r_no, b_ref, checkin, checkout){
-    const qry = `insert into roombooking values (${r_no}, ${b_ref}, '${checkin}', '${checkout}');`
+async function getEventsInfo(){
+    const qry = `select * from events;`;
 
     let response = null;
     try{
@@ -192,18 +224,45 @@ async function makeRoomBooking(r_no, b_ref, checkin, checkout){
         response = (await pool.query(qry));
     }
     catch (error) {
-        response = "Error Making booking: " + error;
+        response = "Error getting events information: " + error;
     }
     return response
 }
 
+// ========================================== Login ========================================================
+async function getPassword(c_no){
+    const qry = `select c_password from login where c_no = ${c_no};`;
 
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error retriving password: " + error;
+    }
+    return response
+}
 
+// ========================================== Reservation ========================================================
+async function populateResservationPage(c_no){
+    const qry = `select b.b_ref, b.b_cost, b.b_outstanding, rb.r_no, rb.checkin, rb.checkout, (rb.checkout - rb.checkin) AS days_reserved
+            from booking b, roombooking rb
+            where b.b_ref = rb.b_ref
+            and b.c_no = ${c_no};`;
 
-
-
-
-
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error getting reservation data: " + error;
+    }
+    return response
+}
 
 // Export the pool
 module.exports = {
@@ -218,5 +277,9 @@ module.exports = {
   makeBooking,
   getRandomRoom,
   makeRoomBooking,
-  getRatesForClass
+  getRatesForClass,
+  getEventsInfo,
+  getPassword,
+  addIntoLogin,
+  populateResservationPage
 };

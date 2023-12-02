@@ -2,24 +2,40 @@ const express = require("express")
 const cors = require('cors');
 
 const app = express()
-const database = require("./database")
+const database = require("./database");
+const { error } = require("console");
 
 // Use the cors middleware to allow requests from all origins
 app.use(cors());
 app.use(express.json())
 
-// // Use the pool for a general query
-// async function selectAllFrom(table) {
-//     try {
-//         const result = await database.pool.query(`SELECT * FROM ${table}`);
-//         console.log(result.rows);
-//     } catch (error) {
-//         console.error('Error in database operation:', error);
-//     }
-// }
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => { console.log(`server listening at port ${PORT}`) });
 
-// ========================================== Make a Booking ========================================================
-app.post("/book", async (req, res) => {
+// Logged in credentials
+let LOGGED_IN = false;
+let CUSTOMER_NUMBER = null;
+
+
+// ========================================== Home page - GET(Card Info) =============================================
+app.get("/", async (req, res) => {
+    // // Set the search path
+    // await database.setSchema();
+
+    try {
+        //  Insert into Data base
+        let response = await database.getRatesForClass()
+        response = response.rows
+
+        console.log(response);
+        res.send(response)
+    } catch (error) {
+        console.error(error)
+    }
+
+})
+// ========================================== Booking =========================================================
+app.post("/booking", async (req, res) => {
     const email = req.body["email"]
     const bCost = req.body["cost"]
     const bOutstanding = req.body["outstanding"]
@@ -53,8 +69,8 @@ app.post("/book", async (req, res) => {
 
 })
 
-// ========================================== Create account Route - Post ========================================================
-app.post('/create_account', async (req, res) => {
+// ========================================== Create account Route - Post ============================================
+app.post('/signup', async (req, res) => {
     // Get the username and password from the json 
     const name = req.body["name"]
     const email = req.body["email"]
@@ -63,10 +79,15 @@ app.post('/create_account', async (req, res) => {
     const cardExp = req.body["card_exp"]
     const cardNo = req.body["card_no"]
     const phoneNo = req.body["phone_no"]
+    const cPassword = req.body["password"]
 
     try {
-        //  Insert into Data base
-        const response = await database.addNewCustomer(name, email, address, cardType, cardExp, cardNo, phoneNo)
+        //  Insert into Customer table
+        let response = await database.addNewCustomer(name, email, address, cardType, cardExp, cardNo, phoneNo)
+        // console.log(response)
+        const cNo = response.rows[0].c_no;
+        // insert into login table
+        response = await database.addIntoLogin(cNo, cPassword)
 
         console.log(response);
         res.send(response)
@@ -77,8 +98,8 @@ app.post('/create_account', async (req, res) => {
 
 })
 
-// ========================================== Home page - GET(Card Info) ========================================================
-app.get("/", async (req, res) => {
+// ========================================== Accomodation page - GET(Card Info) =====================================
+app.get("/accomodation", async (req, res) => {
     // // Set the search path
     // await database.setSchema();
 
@@ -144,7 +165,7 @@ app.get("/management", async (req, res) => {
     console.log(data)
     console.log(res2)
 })
-// ========================================== Home Page - POST ========================================================
+// ========================================== Home Page - POST =======================================================
 app.post("/", (req, res) => {
     // Get the username and password from the json 
     const username = req.body["username"]
@@ -161,5 +182,88 @@ app.post("/", (req, res) => {
     // Set schema path
 })
 
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => { console.log(`server listening at port ${PORT}`) });
+// ========================================== Events - GET ===========================================================
+app.get("/events", async (req, res) => {
+    try {
+        //  Insert into Data base
+        let response = await database.getEventsInfo()
+        response = response.rows
+
+        console.log(response);
+        res.send(response)
+    } catch (error) {
+        console.error(error)
+    }
+})
+
+// ========================================== Log In - POST ==========================================================
+app.post("/signin", async (req, res) => {
+    const email = req.body["email"]
+    const cPassword = req.body["password"]
+
+
+    try {
+        // get the customer number from the email given
+        let response = await database.getCustomerNumber(email);
+        if (response.rows.length == 0) {
+            res.send("No Account associated with this email")
+        }
+        else {
+            // get customer number
+            const cNo = response.rows[0].c_no;
+
+            // get password 
+            response = await database.getPassword(cNo)
+            const actualPassword = response.rows[0].c_password
+
+            // compare passwords
+            if (cPassword === actualPassword) {
+                // set the log in status to be 'true'
+                LOGGED_IN = true;
+                res.status(200).send("Sign in successful")
+
+                // change the customer number that is used by all routes
+                CUSTOMER_NUMBER = cNo;
+            } 
+            else {
+                res.status(403).send("Bad Credentials")
+            }
+        }
+
+    } catch {
+        console.error(error)
+    }
+});
+
+// ========================================== Resservation - Get ========================================================
+app.get("/reservations", async (req, res) => {
+    try {
+        if (LOGGED_IN) {
+            let response = await database.populateResservationPage(CUSTOMER_NUMBER)
+            // if there are no reservations
+            if (response.rows.length == 0) {
+                res.send("No booking")
+            }
+            // Customers got reservations
+            else {
+                res.send(response.rows)
+            }
+        } else {
+            res.send("Not Looged in");
+        }
+    } catch {
+        console.error(error)
+    }
+});
+
+// ========================================== Extra ========================================================
+
+// // Use the pool for a general query
+// async function selectAllFrom(table) {
+//     try {
+//         const result = await database.pool.query(`SELECT * FROM ${table}`);
+//         console.log(result.rows);
+//     } catch (error) {
+//         console.error('Error in database operation:', error);
+//     }
+// }
