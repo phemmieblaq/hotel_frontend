@@ -1,0 +1,23 @@
+.main-heading{
+    color: var(--text-primary, #2C2B2B);
+font-family: Familjen Grotesk;
+font-size: 56px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 250px;
+margin-bottom: 40px;
+width: 100%;
+text-align: center;
+}
+.sub_heading{
+    color: var(--text-primary, #2C2B2B);
+font-family: Familjen Grotesk;
+font-size: 32px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin-bottom: 18px;
+width: 100%;
+text-align: center;
+}

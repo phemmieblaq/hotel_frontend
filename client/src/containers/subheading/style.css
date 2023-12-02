@@ -1,0 +1,55 @@
+.mainHeadingWrapper{
+    display: flex;
+    width:100%;
+    align-items:end;
+    justify-content: space-between;
+    padding-inline: 100px;
+    margin-bottom: 48px;
+    @media screen and (max-width: 800px) {
+       flex-direction: column;
+       gap:8px;
+       padding-inline: 50px;
+      
+       
+       
+
+        
+       }}
+  
+
+  
+
+.mainHeadingWrapper h1{
+    color: var(--text-primary, #2C2B2B);
+font-family: Familjen Grotesk;
+font-size: 64px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+max-width:515px;
+@media screen and (max-width: 800px) {
+    font-size: 40px;
+    display: flex;
+   
+  
+    max-width:100%;
+    width:100%;
+    }
+    @media screen and (max-width: 400px) {
+        font-size: 28px;
+        }
+}
+.mainHeadingWrapper p{
+    color: var(--text-secondary, #4B4848);
+font-family: Familjen Grotesk;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+max-width: 671px;
+@media screen and (max-width: 400px) {
+    font-size: 16px;
+    }
+
+
+}
