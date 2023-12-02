@@ -30,6 +30,7 @@ const DropDownInput = ({
   };
   const handleSelect = (selected) => {
     setSelectedValue(selected);
+    setValue(selected)
    
     setOpen(false);
   };

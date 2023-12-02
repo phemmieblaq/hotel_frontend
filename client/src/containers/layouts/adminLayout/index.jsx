@@ -5,34 +5,38 @@ import Header from '../../header'
 import Faq from '../../faq'
 import Footer from '../../footer'
 import { Outlet } from 'react-router-dom'
+import AnalyticCard from '../../../components/cards/analyticCard'
 
 
-const LandingPageLayout = () => {
+
+const AdminLayout = () => {
   return (
     <div>
-           
         <div className="layout-container">
             <header>
                 <Header
-                />
+                admin/>
             </header>
+
+            
             <body>
+                <AnalyticCard
+                title='Available rooms'
+                number='78'/>
             <Outlet/>
             </body>
             
-           <div className="faq-section">
-            <Faq/>
-            </div>
-            <footer>
-            <Footer/>
-            </footer>
+           
+            
             
           
 
         </div>
     
+
+      
     </div>
   )
 }
 
-export default LandingPageLayout
+export default AdminLayout

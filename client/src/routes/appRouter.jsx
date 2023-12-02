@@ -14,6 +14,8 @@ import PaymentForm from "../containers/paymentForm";
 import BookingForm from "../containers/bookingForm";
 import Confirmation from "../containers/confirmation";
 import Reservation from "../pages/reservation";
+import AdminLayout from "../containers/layouts/adminLayout";
+import Receptionist from "../pages/receptionist";
 const AppRouter = () => {
 
 return (
@@ -43,7 +45,12 @@ return (
                 <Route index element={<Accomodation />} />
                 <Route path=":roomCode" element={<DetailsPage />} />
               </Route>
-                  </Route>     
+                  </Route>  
+                  <Route path="/admin" element={ <AdminLayout />}  >
+                  <Route index element={<Receptionist />} />
+
+
+                   </Route>  
       </Routes>
        <Toaster
           position="top-right"

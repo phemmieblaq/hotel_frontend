@@ -88,3 +88,6 @@ font-weight: 500;
 line-height: normal;
 cursor: pointer;
 }
+.dropWrapper{
+    z-index: 19999;
+}
