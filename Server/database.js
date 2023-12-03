@@ -69,8 +69,15 @@ async function getCustomerNumber(c_email){
 // Get info for the cards in Accomodation and Home
 async function getRatesForClass(){
     const qry = `
-    SELECT *
-    FROM rates;
+    SELECT
+    rates.*,
+    COUNT(room.r_no) AS available_rooms
+    FROM
+    rates
+    LEFT JOIN
+    room ON rates.r_class = room.r_class AND room.r_status = 'A'
+    GROUP BY
+    rates.r_class, rates.price, rates.dimention, rates.no_people, rates.description1, rates.description2, rates.all_rooms_include;
 `
     try {
         // Set the search path before creating the table
@@ -79,7 +86,7 @@ async function getRatesForClass(){
         return response
     }
     catch (error) {
-        console.error("Error getting available rooms:", error);
+        console.error("Error getting Card information:", error);
     }
 }
 
@@ -155,6 +162,22 @@ async function getAllCheckOutRooms(){
     catch (error) {
         console.error("Error getting checked out rooms:", error);
     }
+}
+
+// Update room availability
+async function updateRoomAvaliability(r_no, r_status){
+    const qry = `UPDATE room SET r_status = '${r_status}' WHERE r_no = ${r_no};`;
+
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error getting reservation data: " + error;
+    }
+    return response
 }
 // ========================================== Booking ========================================================
 async function makeBooking(c_no, b_cost, b_outstanding, b_notes){
@@ -246,11 +269,32 @@ async function getPassword(c_no){
 }
 
 // ========================================== Reservation ========================================================
+// Populate the reservations page
 async function populateResservationPage(c_no){
-    const qry = `select b.b_ref, b.b_cost, b.b_outstanding, rb.r_no, rb.checkin, rb.checkout, (rb.checkout - rb.checkin) AS days_reserved
-            from booking b, roombooking rb
-            where b.b_ref = rb.b_ref
-            and b.c_no = ${c_no};`;
+    const qry = `select c.c_name, c.c_email, c.c_phoneno, b.b_ref, b.b_cost, b.b_outstanding, rb.r_no, rb.checkin,
+                rb.checkout, (rb.checkout - rb.checkin) AS days_reserved
+                from booking b, roombooking rb, customer c
+                where b.b_ref = rb.b_ref
+                and c.c_no = b.c_no
+                and b.c_no = ${c_no};`;
+
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error getting reservation data: " + error;
+    }
+    return response
+}
+
+// ========================================== Managment ========================================================
+async function getAllBookings(){
+    const qry = `   SELECT *
+                    FROM roombooking rb, room r
+                    WHERE rb.r_no = r.r_no;`;
 
     let response = null;
     try{
@@ -281,5 +325,7 @@ module.exports = {
   getEventsInfo,
   getPassword,
   addIntoLogin,
-  populateResservationPage
+  populateResservationPage,
+  updateRoomAvaliability,
+  getAllBookings
 };
