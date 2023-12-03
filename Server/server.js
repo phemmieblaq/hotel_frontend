@@ -2,8 +2,6 @@ const express = require("express")
 const cors = require('cors');
 
 const app = express()
-const database = require("./database");
-const { error } = require("console");
 
 // Use the cors middleware to allow requests from all origins
 app.use(cors());

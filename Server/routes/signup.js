@@ -1,28 +1,40 @@
 const express = require('express');
 const router = express.Router();
-const database = require("../database");
+const database = require("../database_queries/customer");
 
 router.post('/', async (req, res) => {
     // Get the username and password from the json 
     const name = req.body["name"]
     const email = req.body["email"]
-    const address = req.body["address"]
-    const cardType = req.body["card_type"]
-    const cardExp = req.body["card_exp"]
-    const cardNo = req.body["card_no"]
     const phoneNo = req.body["phone_no"]
     const cPassword = req.body["password"]
 
+    const data = {
+        "message": "",
+        "data":{
+            "name": name,
+            "email": email,
+            "phone": phoneNo,
+            "cNo": null
+        },
+        "status_code": null
+    }
     try {
         //  Insert into Customer table
-        let response = await database.addNewCustomer(name, email, address, cardType, cardExp, cardNo, phoneNo)
+        let response = await database.addNewCustomer(name, email, phoneNo)
         const cNo = response.rows[0].c_no;
-        // insert into login table
-        response = await database.addIntoLogin(cNo, cPassword)
+        data.data.cNo = cNo
 
-        res.send(response)
+        // insert into login table
+        response = await database.addUserPassword(cNo, cPassword)
+
+        data.message = "Succesfully Created Account"
+        data.status_code = 200
+        res.send(data)
     } catch (error) {
-        console.error(error)
+        data.message = "Error: " + error
+        data.status_code = 404
+        res.send(data)
     }
 
 
