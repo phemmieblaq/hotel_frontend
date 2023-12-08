@@ -7,27 +7,37 @@
    padding-inline: 100px;
    gap:48px;
 
+
   
 }
 
 .swiper-container {
     width: 100%;
     height: 100%;
-    border: 1px solid red;
+   
+    
   }
 .details-image-wrapper{
     max-height: 550px;
     width:100%;
     overflow: hidden;
+    border: 1px solid blue;
+    
  
 }
-.details-image-wrapper .details-image{
-    width: 100%;
- 
-    display: block;
-    height: auto;
- 
+.swipe-image-container {
+  height:550px;
+  max-width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.swipe-image-container img {
+  width: 100%;
+  height: 100%;
+}
+
 .details-content{
 
   width:100%;

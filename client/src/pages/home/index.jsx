@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainBackground from '../../containers/mainBackground'
 import './style.css';
 import HotelCard from '../../components/cards/hotelCard';
@@ -16,11 +16,35 @@ import ghostWalk from '../../assets/png/ghostWalk.png'
 import broads from '../../assets/png/broads.png'
 import garden from '../../assets/png/garden.png'
 import collection from '../../assets/png/collection.png'
+import standardDouble from '../../assets/png/standardDouble.png'
+import standardTwin from '../../assets/png/standardTwin.png'
+import superiorTwin from '../../assets/png/superiorTwin.png'
+import superiorDouble from '../../assets/png/superiorDouble.jpeg'
+
+
 import NorwichAreas from '../../features/norwich';
 // import {  useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { useEffect } from 'react';
+
 
 
 const Home = () => {
+  const[accommodations,setAccommodations]= useState([])
+
+  const fetchAccomodationFromBackend = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/accommodation'); // Adjust the API endpoint accordingly
+      console.log('Data from backend:', response.data);
+      setAccommodations(response.data)
+    } catch (error) {
+      console.error('Error fetching data from backend:', error);
+    }
+  };
+  useEffect(() => {
+    fetchAccomodationFromBackend ()
+    
+  }, []);
   
 
   return (
@@ -32,11 +56,20 @@ const Home = () => {
         <h1 className='first-title-wrapper'>Choose your perfect sanctuary</h1>
         </div>
         <div className="card-wrapper">
-       <HotelCard/>
-       <HotelCard/>
-       <HotelCard/>
-       <HotelCard/>
-       
+        {accommodations?.map((el,index)=>(
+          <div className='singleCardWrapper' key={index}>
+             < HotelCard
+             title={el?.r_class==='std_t'? 'Standard Twin': el?.r_class==='std_d'? 'Standard Double': el?.r_class==='sup_t'? 'Superior Twin': el?.r_class==='sup_d'? 'Superior Double': ''} 
+             size={el?.dimention}
+             noOfPeople={el?.no_people}
+             price={el?.price}
+             description1={el?.description1}
+             description2={el?.description2}
+             img={el?.r_class==='std_t'? standardTwin: el?.r_class==='std_d'? standardDouble: el?.r_class==='sup_t'? superiorTwin: el?.r_class==='sup_d'? superiorDouble: ''}
+            />
+          </div>
+        
+        ))}
         </div>
        
         <h2 className='title-wrapper'>Location</h2>

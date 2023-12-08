@@ -1,4 +1,4 @@
-import React, { Suspense,} from "react";
+import React, { Suspense, } from "react";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import LandingPageLayout from "../containers/layouts/mainPage";
@@ -18,41 +18,31 @@ import AdminLayout from "../containers/layouts/adminLayout";
 import Receptionist from "../pages/receptionist";
 const AppRouter = () => {
 
-return (
+  return (
 
 
-  <Suspense >
-    <Router> 
-      <Routes>
-      <Route path="/" element={ <LandingPageLayout />}>
-        
-    
-                  <Route index element={<Home />} />
-                 
-
-                  <Route path="experience" element={<Experience />} />
-                  <Route path="events" element={<EventRooms />} />
-                  <Route path="test" element={<Reservation />} />
-                  <Route path="reservations" element={<Reservation />} />
-                  <Route path="signup" element={<SignUp />} />
-                  <Route path="signin" element={<SignIn />} />
-                  <Route path="forgotpassword" element={<ForgotPassword />} />
-                  <Route path="booking" element={<BookingForm />} />
-                  <Route path="payment" element={<PaymentForm />} />
-                  <Route path="booking-confirmation" element={<Confirmation />} />
-      
-                  <Route path="accomodation" element={<Outlet />}>
-                <Route index element={<Accomodation />} />
-                <Route path=":roomCode" element={<DetailsPage />} />
-              </Route>
-                  </Route>  
-                  <Route path="/admin" element={ <AdminLayout />}  >
-                  <Route index element={<Receptionist />} />
-
-
-                   </Route>  
-      </Routes>
-       <Toaster
+    <Suspense >
+      <Router>
+        <Routes>
+          <Route path="/" element={<LandingPageLayout />}>
+            <Route index element={<Home />} />
+            <Route path="experience" element={<Experience />} />
+            <Route path="events" element={<EventRooms />} />
+            <Route path="test" element={<Reservation />} />
+            <Route path="reservations" element={<Reservation />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="signin" element={<SignIn />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
+            <Route path="booking" element={<BookingForm />} />
+            <Route path="payment" element={<PaymentForm />} />
+            <Route path="booking-confirmation" element={<Confirmation />} />
+            <Route path="accomodation" element={<Outlet />}>
+              <Route index element={<Accomodation />} />
+              <Route path=":roomCode" element={<DetailsPage />} />
+            </Route>
+          </Route>
+        </Routes>
+        <Toaster
           position="top-right"
           toastOptions={{
             className: "",
@@ -96,10 +86,10 @@ return (
             },
           }}
         />
-        </Router>
+      </Router>
     </Suspense>
-)
-     
+  )
+
 };
 
 
