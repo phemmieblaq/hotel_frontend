@@ -8,11 +8,13 @@ import { loginSchema } from '../../pages/authPages/authSchema'
 import NumberInput from '../../components/input/phoneNumberInput'
 import DropDownInput from '../../components/input/dropDownInput'
 import { bookingSchema } from './bookingSchema'
+import StatusCard from '../../components/cards/statusCard'
 
 const BookingForm = () => {
 
     const [dateFrom, setdateFrom] = useState("");
   const [dateTo, setdateTo] = useState("");
+ 
   console.log(dateTo)
   const handleDateFrom = (e) => {
     const value = e.target.value;
@@ -26,6 +28,7 @@ const BookingForm = () => {
     setValue("checkOutDate", dateTo, { shouldValidate: true });
 
   };
+  
     const {
         handleSubmit,
         register,
@@ -35,12 +38,10 @@ const BookingForm = () => {
         resolver: yupResolver(bookingSchema),
       });
 
-      const handleNumberChange = (value) => {
-        setValue("phone", value, { shouldValidate: true });
-      };
+      
     const options =['Standard Double', 'Standard Twin', 'Superior Double', 'Superior Twin']
     const handleGuestChange = (value) => {
-        setValue("Number", value, { shouldValidate: true });
+        setValue("roomTypes", value, { shouldValidate: true });
       };
     
       const submitForm =(data)=>{
@@ -93,9 +94,10 @@ const BookingForm = () => {
                 label="Room Types"
                 name="roomTypes"
                 initialValue='select'
+                setValue={handleGuestChange}
                
                 errorMessage={errors.roomTypes?.message}
-                handleReferralChange={handleGuestChange}
+               
               />
               
          <div className="signUpWrapper">
@@ -111,6 +113,7 @@ const BookingForm = () => {
       
       </AuthLayout>
       </div>
+      <StatusCard/>
     </div>
   )
 }

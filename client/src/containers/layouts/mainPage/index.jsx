@@ -13,7 +13,8 @@ const LandingPageLayout = () => {
            
         <div className="layout-container">
             <header>
-                <Header/>
+                <Header
+                />
             </header>
             <body>
             <Outlet/>

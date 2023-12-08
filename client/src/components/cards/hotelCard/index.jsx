@@ -7,11 +7,11 @@ import wifi from '../../../assets/svg/wifi.svg';
 
 import './style.css'
 import Button from '../../button';
-const HotelCard = ({onClick=()=>{},title ='Deluxe Room' , price='$45/night', size,noOfPeople, accomodation}) => {
+const HotelCard = ({onClick=()=>{},title ='Deluxe Room' , price='$45/night', size,noOfPeople, accomodation,description1, description2, img=doubleBed}) => {
   return (
     <div className='Wrapper'>
         <div className="image-wrapper">
-            <img src={doubleBed} alt="" />
+            <img src={img} alt="hotel" />
 
         </div>
         <div >
@@ -37,13 +37,13 @@ const HotelCard = ({onClick=()=>{},title ='Deluxe Room' , price='$45/night', siz
                 <div className="icon-text">
                     <div className="icon"/>
                 
-                    <p> Cozy yet fully equipped</p>
+                    <p> {description1}</p>
                     
                 </div>
                 <div className="icon-text">
                 <div className="icon"/>
                    
-                    <p> City view</p>
+                <p> {description2}</p>
                     </div>
                
                 

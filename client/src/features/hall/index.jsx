@@ -8,16 +8,17 @@ import './style.css';
 const Hall = ({hallPicture = hall, 
   hallHeading = 'Hall Revolve',
   dimension ='10 X 22 X 3.6',
-  rangeOfPeople ='20-60 Adults', 
+  rangeOfPeople ='20', 
   theater ='50',
   classRoom = '60', 
+  img={hallPicture},
   shape ='45',
-details='The larger half of the ballroom, with natural daylight, is ideal for conferences with breakout sessions. Enjoy a range of layouts and state-of-the-art equipment.'}) => {
+  description='The larger half of the ballroom, with natural daylight, is ideal for conferences with breakout sessions. Enjoy a range of layouts and state-of-the-art equipment.'}) => {
   return (
     <div>
         <div className="hall-wrapper">
           <div className="hall-image-wrapper">
-            <img src={hallPicture} alt="hall" className='hall-image'/>
+            <img src={img} alt="hall" className='hall-image'/>
 
           </div>
          
@@ -36,7 +37,7 @@ details='The larger half of the ballroom, with natural daylight, is ideal for co
               <div>
               <img src={people} alt="" />
               </div>
-              <p>{rangeOfPeople}</p>
+              <p>{rangeOfPeople} people </p>
            
 
             </div>
@@ -58,7 +59,7 @@ details='The larger half of the ballroom, with natural daylight, is ideal for co
 
 
             </div>
-            <p className="details">{details}</p>
+            <p className="details">{description}</p>
           </div>
           
 
