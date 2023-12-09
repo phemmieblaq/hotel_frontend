@@ -12,9 +12,10 @@ import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 import Drawer from '../drawer';
+import DropDownInput from '../../components/input/dropDownInput';
 
 
-const Header = () => {
+const Header = ({admin}) => {
     const [toggle,setToggle] = useState(false);
     const handleToggle = ()=>{
         setToggle(true);
@@ -24,6 +25,7 @@ const Header = () => {
     }
 
     let navigate =useNavigate();
+    const options=['Receptionist','HouseKeeper']
 
     const homeNavigation = ()=>{
         navigate('/')
@@ -43,6 +45,7 @@ const Header = () => {
                 </div>
                     <h1 >Crown Hotel</h1>
                 </div>
+                {!admin &&
                 <div className="linkWrapper">
             {headerLink?.map((el, index)=>(
                 <ActiveNav
@@ -54,7 +57,9 @@ const Header = () => {
    
    
                   
-                </div>
+                </div>}
+                {!admin &&
+
                 <div className="subWrapper">
                 <div className="contactWrapper">
                 <div className="logoWrapper">
@@ -83,8 +88,26 @@ const Header = () => {
    
 
    </div>
-    </div>
-    {matches&& !toggle&&(
+    </div>}
+    {admin &&
+    <div className="dropWrapper">
+
+<DropDownInput
+                Options={options}
+               
+                
+                
+              
+             
+                initialValue='Receptionist'
+                // setValue={handleGuestChange}
+               
+                
+               
+              />
+  </div>
+  }
+    {matches&& !toggle&& !admin &&(
     <div className="harmburgerWrapper">
 
                     <div>

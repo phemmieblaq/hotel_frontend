@@ -2,6 +2,7 @@ import React from 'react'
 import tick from '../../assets/svg/tick.svg'
 import Button from '../../components/button'
 import './style.css';
+import AnalyticCard from '../../components/cards/analyticCard';
 
 const Confirmation = () => {
   return (
@@ -26,6 +27,7 @@ const Confirmation = () => {
         title='View more rooms'
         secondary
         />
+         
         </div>
 
 </div>

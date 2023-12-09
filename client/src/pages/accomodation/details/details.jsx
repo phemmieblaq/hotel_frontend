@@ -13,7 +13,7 @@ const DetailsPage = () => {
 
   
 <OtherBg
-title={params.roomCode==='122343389' ? 'Deluxe':params.roomCode==='122343385'? 'Suite':'Junior Suite'} />
+title={params.roomCode==='std_t' ? 'Standard Twin':params.roomCode==='std_d'? 'Standard Double':params.roomCode==='sup_d'? 'Superior Double':params.roomCode==='sup_t'? 'Superior Twin':''} />
    </div>
    <RoomDetails/>
     </div>
