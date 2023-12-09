@@ -34,18 +34,3 @@ app.use('/signin', signinRoute);
 app.use('/reservations', reservationsRoute);
 app.use('/events', eventsRoute);
 app.use('/payment', paymentRoute);
-
-
-
-
-// ========================================== Extra ========================================================
-
-// // Use the pool for a general query
-// async function selectAllFrom(table) {
-//     try {
-//         const result = await database.pool.query(`SELECT * FROM ${table}`);
-//         console.log(result.rows);
-//     } catch (error) {
-//         console.error('Error in database operation:', error);
-//     }
-// }
