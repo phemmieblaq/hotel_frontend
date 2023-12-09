@@ -20,6 +20,8 @@ const managementRoute = require('./routes/management');
 const signinRoute = require('./routes/signin');
 const reservationsRoute = require('./routes/reservations');
 const eventsRoute = require('./routes/events');
+const paymentRoute = require('./routes/payment');
+
 
 
 // Use route files
@@ -31,6 +33,8 @@ app.use('/management', managementRoute);
 app.use('/signin', signinRoute);
 app.use('/reservations', reservationsRoute);
 app.use('/events', eventsRoute);
+app.use('/payment', paymentRoute);
+
 
 
 

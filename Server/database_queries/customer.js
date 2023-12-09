@@ -46,6 +46,27 @@ async function addUserPassword(c_no, c_password){
     return response
 }
 
+// Add user payment Information
+async function addUserPaymentDetails(c_no, cType, cExp, cNo){
+    const qry = `UPDATE customer
+    SET
+        c_cardtype = '${cType}',
+        c_cardexp = '${cExp}', 
+        c_cardno = '${cNo}'      
+    WHERE
+        c_no = ${c_no};`;
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error Setting Customer Payment Details: " + error;
+    }
+    return response
+}
+
 // Get customer ID through email
 async function getCustomerNumber(c_email){
     const qry = `select c_no from customer where c_email='${c_email}'`
@@ -103,5 +124,6 @@ module.exports = {
     addUserPassword,
     getCustomerNumber,
     getUsersReservations,
-    getPassword
+    getPassword,
+    addUserPaymentDetails
 }
