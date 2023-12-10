@@ -35,8 +35,8 @@ const Home = () => {
   const fetchAccomodationFromBackend = async () => {
     try {
       const response = await axios.get('http://localhost:3001/accommodation'); // Adjust the API endpoint accordingly
-      console.log('Data from backend:', response.data);
-      setAccommodations(response.data)
+      console.log('acc:', response.data);
+      setAccommodations(response.data.data)
     } catch (error) {
       console.error('Error fetching data from backend:', error);
     }
