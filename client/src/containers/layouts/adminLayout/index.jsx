@@ -19,12 +19,12 @@ const AdminLayout = () => {
             </header>
 
             
-            <body>
+            <main>
                 <AnalyticCard
                 title='Available rooms'
                 number='78'/>
             <Outlet/>
-            </body>
+            </main>
             
            
             
