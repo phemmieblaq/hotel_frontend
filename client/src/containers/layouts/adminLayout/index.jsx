@@ -8,23 +8,21 @@ import Receptionist from '../../../pages/receptionist'
 
 const AdminLayout = () => {
   const [val, setVal] = useState('Reception')
-  const handleSetVal = (selectedVal)=>{
+  const handleSetVal = (selectedVal) => {
     setVal(selectedVal)
   }
   return (
     <div>
-        <div className="layout-container">
-            <header>
-                <Header admin handleSelect={handleSetVal}/>
-            </header>
+      <div className="layout-container">
+        <header>
+          <Header admin handleSelect={handleSetVal} />
+        </header>
 
-            <main>
-                <AnalyticCard
-                title='Available rooms'
-                number='78'/>
-            <Receptionist user={val}/>
-            </main>
-        </div>      
+        <main>
+          <AnalyticCard title='Available rooms' number='78' />
+          <Receptionist user={val} />
+        </main>
+      </div>
     </div>
   )
 }

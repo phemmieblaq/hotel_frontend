@@ -19,7 +19,7 @@ const Header = ({ admin, handleSelect}) => {
     const handleHeaderDropdownSelect = (selectedValue) => {     // Set the headerDropdownvalue to be the selected one
         handleSelect(selectedValue);
     };
-    // const options = ['Receptionist', 'HouseKeeper']
+    const options = ['Receptionist', 'HouseKeeper']
 
     const [toggle, setToggle] = useState(false);
     const handleToggle = () => {
@@ -81,7 +81,7 @@ const Header = ({ admin, handleSelect}) => {
                         </div>}
                     {admin &&
                         <div className="dropWrapper">
-                            <DropDownInput options={['Reception', 'Housekeeper']} onSelect={handleHeaderDropdownSelect} />
+                            <DropDownInput options={options} onSelect={handleHeaderDropdownSelect} />
 
                         </div>
                     }

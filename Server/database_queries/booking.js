@@ -51,7 +51,8 @@ async function getRoomBookings(date){
         SELECT *
         FROM roombooking rb, room r
         WHERE rb.r_no = r.r_no
-        and rb.checkin = '${date}'::date and r.r_status = 'X';
+        and rb.checkin = '${date}'::date and r.r_status = 'X'
+        order by rb.checkin;
     `
     try {
         // Set the search path before creating the table

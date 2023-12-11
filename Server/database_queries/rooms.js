@@ -41,7 +41,7 @@ async function getAllAvailableRooms(){
     const qry = `
         SELECT *
         FROM room
-        WHERE r_status = 'A';
+        WHERE r_status = 'A' order by r_no;
     `
     try {
         // Set the search path before creating the table
