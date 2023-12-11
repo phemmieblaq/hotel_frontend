@@ -23,7 +23,7 @@ import superiorDouble from '../../assets/png/superiorDouble.jpeg'
 
 
 import NorwichAreas from '../../features/norwich';
-// import {  useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useEffect } from 'react';
 
@@ -45,6 +45,7 @@ const Home = () => {
     
   }, []);
   
+  let navigate = useNavigate();
 
   return (
     <div className='main-container '>
@@ -65,6 +66,7 @@ const Home = () => {
              description1={el?.description1}
              description2={el?.description2}
              img={el?.r_class==='std_t'? standardTwin: el?.r_class==='std_d'? standardDouble: el?.r_class==='sup_t'? superiorTwin: el?.r_class==='sup_d'? superiorDouble: ''}
+             onClick={() => { navigate('/booking') }}
             />
           </div>
         

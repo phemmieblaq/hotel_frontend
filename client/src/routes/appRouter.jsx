@@ -26,18 +26,16 @@ const AppRouter = () => {
     <Suspense >
       <Router>
         <Routes>
-           
-        <Route path="/admin" element={ <AdminLayout />}  >
-                  <Route index element={<Receptionist />} />
 
-
-                   </Route>  
+          <Route path="/admin" element={<AdminLayout />}  >
+            <Route index element={<Receptionist />} />
+          </Route>
           <Route path="/" element={<LandingPageLayout />}>
             <Route index element={<Home />} />
             <Route path="experience" element={<Experience />} />
             <Route path="events" element={<EventRooms />} />
             <Route path="test" element={<Reservation />} />
-            
+
             <Route path="signup" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />
@@ -45,13 +43,13 @@ const AppRouter = () => {
             <Route path="payment" element={<PaymentForm />} />
             <Route path="booking-confirmation" element={<Confirmation />} />
             <Route path="reservations" element={<Reservation />}>
-            <Route index element={<Food />} />
-            <Route path='/reservations/drinks' element={<Drinks />} />
+              <Route index element={<Food />} />
+              <Route path='/reservations/drinks' element={<Drinks />} />
             </Route>
             <Route path="accomodation" element={<Outlet />}>
               <Route index element={<Accomodation />} />
               <Route path=":roomCode" element={<DetailsPage />} />
-             
+
             </Route>
           </Route>
         </Routes>

@@ -15,21 +15,21 @@ import { checkStaffEmail } from '../../../globalFunction';
 const SignIn = () => {
 
   const [responseData, setResponseData] = useState({});
-  
- 
-
-// Define the API endpoint URL
-const apiUrl = 'http://localhost:3001/signin';
 
 
 
-  let navigate =useNavigate();
+  // Define the API endpoint URL
+  const apiUrl = 'http://localhost:3001/signin';
 
-  const signUpNavigation = ()=>{
-      navigate('/signup')
-      // toast.success('Sign Up Success');
+
+
+  let navigate = useNavigate();
+
+  const signUpNavigation = () => {
+    navigate('/signup')
+    // toast.success('Sign Up Success');
   }
-  
+
 
   const {
     handleSubmit,
@@ -39,7 +39,7 @@ const apiUrl = 'http://localhost:3001/signin';
     resolver: yupResolver(loginSchema),
   });
 
-  const submitForm = async(formData) => {
+  const submitForm = async (formData) => {
     console.log(formData)
     const postData = {
       "email": formData?.email,
@@ -50,18 +50,21 @@ const apiUrl = 'http://localhost:3001/signin';
     // Make a POST request using Axios
     try {
       const response = await axios.post(apiUrl, postData);
-      console.log('Response:',response.data.status_code);
-     
+      console.log('Response:', response.data);
+
       localStorage.setItem("userInfo", JSON.stringify(response.data));
-    if( response.data.status_code!==404 ){
-      toast.success('login successfully');
-      staffCheck 
-      ? navigate("/admin")
-      : navigate("/");
-    }
-    else{
-      toast.error('check your login details');
-    }
+      if (response.data.status_code == 200) {
+        toast.success('login successfully');
+        staffCheck
+          ? navigate("/admin")
+          : navigate("/");
+      }
+      else if(response.data.status_code == 404){
+        toast.error('No Account associated with this email');
+      }
+      else {
+        toast.error('check your login details');
+      }
 
     } catch (error) {
       // Handle the error
@@ -69,55 +72,55 @@ const apiUrl = 'http://localhost:3001/signin';
 
     }
 
-       
-  // localStorage.setItem("userEmail", formData.email);
+
+    // localStorage.setItem("userEmail", formData.email);
   }
-  
-   
-  
+
+
+
   return (
     <div>
       <>
-    <div className='top_Wrapper'>
-      <div className='mainAuthWrapper'>
-      <AuthLayout
-      heading='Welcome back'
-      subHeading='Provide the required information to access your account'
-      >
-        <form onSubmit={handleSubmit(submitForm)}>
-        <InputWithLabel
-        label='Email'
-        type='email'
-                name="email"
-                register={register}
-                errorMessage={errors.email?.message}/>
-      
-        
-         <InputWithLabel
-        label='Password'
-        type='password'
-       
-                name="password"
-                register={register}
-                errorMessage={errors.password?.message}/>
-         <div className="signUpWrapper">
-            <Button
-      title ='Sign in '
-     />
-     
-      </div>
+        <div className='top_Wrapper'>
+          <div className='mainAuthWrapper'>
+            <AuthLayout
+              heading='Welcome back'
+              subHeading='Provide the required information to access your account'
+            >
+              <form onSubmit={handleSubmit(submitForm)}>
+                <InputWithLabel
+                  label='Email'
+                  type='email'
+                  name="email"
+                  register={register}
+                  errorMessage={errors.email?.message} />
 
-    </form>
-    
-      <p className='bottomText'>
-      Don’t have an account? <span onClick={signUpNavigation}>Create an account</span> 
-      </p>
 
-      
-      </AuthLayout>
-      </div>
-    </div>
-    </>
+                <InputWithLabel
+                  label='Password'
+                  type='password'
+
+                  name="password"
+                  register={register}
+                  errorMessage={errors.password?.message} />
+                <div className="signUpWrapper">
+                  <Button
+                    title='Sign in '
+                  />
+
+                </div>
+
+              </form>
+
+              <p className='bottomText'>
+                Don’t have an account? <span onClick={signUpNavigation}>Create an account</span>
+              </p>
+
+
+            </AuthLayout>
+          </div>
+        </div>
+      </>
     </div>
   )
 }

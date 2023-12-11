@@ -1,4 +1,4 @@
-.allWrapper{
+.allWrapper {
     display: flex;
     max-width: 100%;
     /* border: 1px solid red; */
@@ -7,87 +7,102 @@
     justify-content: center;
     align-items: center;
     background: #FFF;
-    margin :0 auto;
+    margin: 0 auto;
     position: fixed;
-    top:0;
-    left:0;
-    z-index:20;
-   
+    top: 0;
+    left: 0;
+    z-index: 20;
+
     overflow-x: hidden;
+
     @media screen and (max-width: 800px) {
         padding: 54px 16px 32px 16px;
-    
-      }
+
+    }
 
 }
-.innerWrapper{
+
+.innerWrapper {
     display: flex;
-   
-   justify-content: space-between;
-   overflow: hidden;
+
+    justify-content: space-between;
+    overflow: hidden;
     width: 100%;
     align-items: center;
-     
-    
-}
-.logoWrapper, .harmburgerWrapper{
-    display: flex;
-justify-content: center;
-align-items: center;
-gap: 8px;
+
 
 }
-h1{
+
+.logoWrapper,
+.harmburgerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+}
+.logoWrapper:hover,
+.harmburgerWrapper:hover {
+    cursor: pointer;
+}
+
+h1 {
     color: #363736;
-font-family: Familjen Grotesk;
-font-size: 24px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    font-family: Familjen Grotesk;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 
 }
-.linkWrapper{
+
+.linkWrapper {
     display: flex;
     align-items: center;
- 
+
     max-width: max-content;
-  gap: 24px;
-  @media screen and (max-width: 1305px) {
-    display:none;
-   
-     }
+    gap: 24px;
 
-    
+    @media screen and (max-width: 1305px) {
+        display: none;
+
+    }
+
+
 }
-.linkWrapper p{
+
+.linkWrapper p {
     color: #4B4848;
-font-family: Familjen Grotesk;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-width: 100%;
+    font-family: Familjen Grotesk;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
 }
-.subWrapper{
+
+.subWrapper {
     display: flex;
     align-items: center;
-    gap:48px;
+    gap: 48px;
     white-space: nowrap;
+
     @media screen and (max-width: 1305px) {
-        display:none;
-       
-         }
+        display: none;
+
+    }
 }
 
-.text{
+.text {
     color: #2C2B2B;
-font-family: Familjen Grotesk;
-font-size: 18px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-cursor: pointer;
+    font-family: Familjen Grotesk;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
 }
-.dropWrapper{
+
+.dropWrapper {
     z-index: 19999;
 }

@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
         let response = await database.getCustomerNumber(email);
         if (response.rows.length == 0) {
             data.message = "No Account associated with this email"
-            data.status_code = 200
+            data.status_code = 404
         }
         else {
             // get customer number
