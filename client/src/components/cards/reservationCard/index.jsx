@@ -2,25 +2,30 @@ import React from 'react'
 import './style.css'
 import Button from '../../button';
 
-const ReservationCard = () => {
+const ReservationCard = ({checkIn, checkOut, noOfDays,refNumber,roomNo}) => {
 
   return (
     <div className='mainReservationWrapper'>
       <div className="reservationWrapper">
         <div className="innerContainer">
+        <ReservationDetails
+            details=' Booking Ref Number :'
+            filledDetails={refNumber}/>
             <ReservationDetails
             details=' Rooms:'
-            filledDetails='Room 24 (Pearls room) and Room 26(Suite)'/>
+            filledDetails={`${roomNo} `}/>
+              <div className="flexwrapper">
             <ReservationDetails
-            details='Duration:'
-            filledDetails='3 days'/>
+            details='Duration'
+            filledDetails={`${noOfDays} days `} />
+            </div>
             <div className="flexwrapper">
      <ReservationDetails
             details='Check-in:'
-            filledDetails='Mon 6th of oct 2023'/>
+            filledDetails= {checkIn}/>
      <ReservationDetails
             details='Check-out:'
-            filledDetails='Mon 6th of oct 2023'/>
+            filledDetails={checkOut}/>
             </div>
      
      
@@ -34,7 +39,7 @@ const ReservationCard = () => {
             secondary/>
             </div>
            
-            <p onClick={{}}   className="cancel">
+            <p    className="cancel">
             Cancel bookings
             </p>
           
