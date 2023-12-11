@@ -5,8 +5,10 @@ import { headerLink } from '../header/constant'
 import './style.css'
 
 import OtherButton from '../../components/button/OtherButton'
+import { useNavigate } from 'react-router-dom'
 
 const Drawer = ({action}) => {
+    let  navigate = useNavigate()
   return (
  
       <div className="drawerWrapper">
@@ -51,7 +53,8 @@ const Drawer = ({action}) => {
                
          <OtherButton
          primaryWhite
-         title='Book Now'/>
+         title='Book Now'
+         onClick={()=>(navigate('/accomodation'))}/>
    
 
    </div>

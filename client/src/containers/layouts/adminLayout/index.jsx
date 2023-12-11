@@ -31,8 +31,8 @@ const AdminLayout = () => {
           <Header admin handleSelect={handleSetVal} />
         </header>
 
-        <main>
-          <AnalyticCard title='Available rooms' number='78'/>
+        <main className='nainClass'>
+          {/* <AnalyticCard title='Available rooms' number='78'/> */}
           <Receptionist user={val} />
           {/* <Home/> */}
         </main>
