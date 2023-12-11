@@ -16,6 +16,8 @@ import Confirmation from "../containers/confirmation";
 import Reservation from "../pages/reservation";
 import AdminLayout from "../containers/layouts/adminLayout";
 import Receptionist from "../pages/receptionist";
+import Food from "../pages/reservation/food";
+import Drinks from "../pages/reservation/drinks";
 const AppRouter = () => {
 
   return (
@@ -35,13 +37,17 @@ const AppRouter = () => {
             <Route path="experience" element={<Experience />} />
             <Route path="events" element={<EventRooms />} />
             <Route path="test" element={<Reservation />} />
-            <Route path="reservations" element={<Reservation />} />
+            
             <Route path="signup" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />
             <Route path="booking" element={<BookingForm />} />
             <Route path="payment" element={<PaymentForm />} />
             <Route path="booking-confirmation" element={<Confirmation />} />
+            <Route path="reservations" element={<Reservation />}>
+            <Route index element={<Food />} />
+            <Route path='/reservations/drinks' element={<Drinks />} />
+            </Route>
             <Route path="accomodation" element={<Outlet />}>
               <Route index element={<Accomodation />} />
               <Route path=":roomCode" element={<DetailsPage />} />

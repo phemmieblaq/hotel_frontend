@@ -16,4 +16,27 @@ export const checkStaffEmail = (email) => {
     navigate("/signin");
   };
 
+  export const  formatDate=(dateString, options = {})=> {
+    const defaultOptions = {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+      timeZone: 'UTC', // Ensure the date is interpreted in UTC
+    };
+  
+    const mergedOptions = { ...defaultOptions, ...options };
+    const date = new Date(dateString);
+  
+    return date.toLocaleString('en-US', mergedOptions);
+  }
+  
+  // Example usage:
+  const inputDate = "2023-12-06T00:00:00.000Z";
+  const formattedDate = formatDate(inputDate);
+  
+  console.log(formattedDate);
+  
   

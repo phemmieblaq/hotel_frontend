@@ -3,7 +3,7 @@ const router = express.Router();
 const database = require("../database_queries/customer");
 const databaseFood = require("../database_queries/food_drinks")
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
 const cNo = req.body["cNo"]
 
 const data = {
@@ -14,7 +14,7 @@ const data = {
 }
     // Reservation
 try {
-    if (cNo != null) {
+    if (cNo !==null) {
         let response = await database.getUsersReservations(cNo)
         // if there are no reservations
         if (response.rows.length == 0) {
@@ -28,7 +28,7 @@ try {
             data.reservation.status_code = 200
         }
     } else {
-        data.reservation.message = "Not Looged in"
+        data.reservation.message = "Not Logged in"
         data.reservation.status_code = 200
     }
 
