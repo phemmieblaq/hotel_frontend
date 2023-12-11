@@ -69,7 +69,7 @@ async function getRandomRoom(r_class){
         response = (await pool.query(qry));
     }
     catch (error) {
-        response = "Error Making booking: " + error;
+        response = "Room Type fully booked: " + error;
     }
     return response
 }
@@ -79,7 +79,7 @@ async function getAllUnavailableRooms(){
     const qry = `
         SELECT *
         FROM room
-        WHERE r_status <> 'A';
+        WHERE r_status = 'O';
     `
     try {
         // Set the search path before creating the table

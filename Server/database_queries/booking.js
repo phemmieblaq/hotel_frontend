@@ -46,12 +46,12 @@ async function makeRoomBooking(r_no, b_ref, checkin, checkout){
 
 
 // Get all bookings from a 'date' for the next 'interval' days
-async function getRoomBookings(date, interval){
+async function getRoomBookings(date){
     const qry = `
         SELECT *
         FROM roombooking rb, room r
         WHERE rb.r_no = r.r_no
-        and rb.checkin >= '${date}'::date AND rb.checkin < '${date}'::date + INTERVAL '${interval} days';
+        and rb.checkin = '${date}'::date and r.r_status = 'X';
     `
     try {
         // Set the search path before creating the table
