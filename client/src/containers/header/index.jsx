@@ -84,7 +84,8 @@ const Header = ({admin}) => {
         
                
          <Button
-         title='Book Now'/>
+         title='Book Now'
+         onClick={()=>{navigate('/accomodation')}}/>
    
 
    </div>

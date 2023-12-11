@@ -7,12 +7,27 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from '../authSchema';
 import '../style.css'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { checkStaffEmail } from '../../../globalFunction';
 
 const SignIn = () => {
+
+  const [responseData, setResponseData] = useState({});
+  
+ 
+
+// Define the API endpoint URL
+const apiUrl = 'http://localhost:3001/signin';
+
+
+
   let navigate =useNavigate();
 
   const signUpNavigation = ()=>{
       navigate('/signup')
+      // toast.success('Sign Up Success');
   }
   
 
@@ -24,9 +39,42 @@ const SignIn = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const submitForm =(data)=>{
-    console.log(data);
+  const submitForm = async(formData) => {
+    console.log(formData)
+    const postData = {
+      "email": formData?.email,
+      "password": formData?.password
+    }
+
+    let staffCheck = checkStaffEmail(formData.email);
+    // Make a POST request using Axios
+    try {
+      const response = await axios.post(apiUrl, postData);
+      console.log('Response:',response.data.status_code);
+     
+      localStorage.setItem("userInfo", JSON.stringify(response.data));
+    if( response.data.status_code!==404 ){
+      toast.success('login successfully');
+      staffCheck 
+      ? navigate("/admin")
+      : navigate("/");
+    }
+    else{
+      toast.error('check your login details');
+    }
+
+    } catch (error) {
+      // Handle the error
+      console.error('Error:', error.message);
+
+    }
+
+       
+  // localStorage.setItem("userEmail", formData.email);
   }
+  
+   
+  
   return (
     <div>
       <>
