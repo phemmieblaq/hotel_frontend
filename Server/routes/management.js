@@ -17,11 +17,11 @@ router.get("/", async (req, res) => {
     
     const date = `${year}-${month}-${day}`;
 
-    // For the next week
-    const interval = '7';
+    // // For the next week
+    // const interval = '31';
     
     // Select the number of rows from date to date + interval
-    const allBookings = await database_booking.getRoomBookings(date, interval);
+    const allBookings = await database_booking.getRoomBookings(date);
 
     // Select the number of available rooms
     const available_rooms = await database_rooms.getAllAvailableRooms();
@@ -122,6 +122,26 @@ router.post("/housekeeping/cleaned", async (req,res) =>{
     
     try{
         await database_rooms.updateRoomAvaliability(room_number, "A")
+        data.message = "Successfully Updated Room Status"
+        data.status_code = 200
+
+    } catch (error){
+        data.message = "Error Updating room status: " + error
+        data.status_code = 402
+    }
+    res.send(data)
+})
+
+router.post("/housekeeping/cleaning", async (req,res) =>{
+    const room_number = req.body["r_no"];
+
+    const data = {
+        "message": "",
+        "status_code": null
+    }
+    
+    try{
+        await database_rooms.updateRoomAvaliability(room_number, "C")
         data.message = "Successfully Updated Room Status"
         data.status_code = 200
 

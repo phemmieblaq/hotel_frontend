@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
         res.send(data)
     } catch (error) {
         const data = {
-            "message": "Booking Unsuccessfull:" + error,
+            "message": "Room Type fully Booked:" + error,
             "data": {
                 "customer_number": null,
                 "booking_ref": null,

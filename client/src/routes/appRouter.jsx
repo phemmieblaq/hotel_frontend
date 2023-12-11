@@ -49,7 +49,6 @@ const AppRouter = () => {
             <Route path="accomodation" element={<Outlet />}>
               <Route index element={<Accomodation />} />
               <Route path=":roomCode" element={<DetailsPage />} />
-
             </Route>
           </Route>
         </Routes>
