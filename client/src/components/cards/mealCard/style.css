@@ -1,35 +1,45 @@
-.mealContainer{
-
-    max-width: 397px;
+.mealContainer {
+    max-width: 15rem;
     max-height: 402px;
-    width:100%;
-border-radius: 12px;
-background: #FFFF;
-
-padding: 24px;
-
+    width: 100%;
+    border-radius: 12px;
+    background: #FFFF;
+    padding: 24px;
 }
-.innerMealContainer{
-    display:flex;
+.mealImage{
+    width: 100%;
+}
+.mealImage img{
+    width: 100%;
+    height: 100%;
+}
+
+
+.innerMealContainer {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 16px;
 }
-.mealTitle{
+
+.mealTitle {
     color: var(--text-primary, #2C2B2B);
-font-family: Familjen Grotesk;
-font-size: 24px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+    font-family: Familjen Grotesk;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }
-.pricebuttonFlex{
-    display:flex;
-   
+
+.pricebuttonFlex {
+    display: flex;
     align-items: center;
-    justify-content: space-between;
 }
-.cartButtonWrapper{
+.mealPrice{
+    width: 100%;
+    margin-right: 0.5rem;
+}
+.cartButtonWrapper {
     display: flex;
     align-items: center;
     justify-content: center;

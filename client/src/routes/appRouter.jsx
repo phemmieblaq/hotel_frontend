@@ -35,7 +35,6 @@ const AppRouter = () => {
             <Route path="experience" element={<Experience />} />
             <Route path="events" element={<EventRooms />} />
             <Route path="test" element={<Reservation />} />
-
             <Route path="signup" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
             <Route path="forgotpassword" element={<ForgotPassword />} />

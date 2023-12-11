@@ -1,51 +1,60 @@
-.main-heading{
+.main-heading {
     color: var(--text-primary, #2C2B2B);
-font-family: Familjen Grotesk;
-font-size: 56px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-margin-top: 250px;
-margin-bottom: 40px;
-width: 100%;
-text-align: center;
+    font-family: Familjen Grotesk;
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 250px;
+    margin-bottom: 40px;
+    width: 100%;
+    text-align: center;
 }
-.sub_heading{
+
+.sub_heading {
     color: var(--text-primary, #2C2B2B);
-font-family: Familjen Grotesk;
-font-size: 32px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-margin-bottom: 18px;
-width: 100%;
-text-align: center;
+    font-family: Familjen Grotesk;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 18px;
+    width: 100%;
+    text-align: center;
 }
-.fullLength{
+
+.fullLength {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.meal_LinkWrapper{
+
+.meal_LinkWrapper {
     display: flex;
-   
-width: fit-content;
-justify-content: center ;
-height:56px;
-border-radius: 12px;
-border: 2px solid #700511;
-
-
-
-align-items: center;
+    width: fit-content;
+    justify-content: center;
+    height: 56px;
+    border-radius: 12px;
+    border: 2px solid #700511;
+    align-items: center;
 }
-.firstNav{
+
+.firstNav {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
- height: 44px;
+    height: 44px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.mealCards {
+    background-color: #700511;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem; 
 }

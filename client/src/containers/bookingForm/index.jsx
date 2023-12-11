@@ -39,7 +39,7 @@ const BookingForm = () => {
   const {handleSubmit, register, setValue, formState: { errors }} = useForm({resolver: yupResolver(bookingSchema)});
 
 
-  const options = ['Standard Double', 'Standard Twin', 'Superior Double', 'Superior Twin']
+  const options = ['Standard Double', 'Standard Twin', 'Superior Double', 'Superior Twin'];
 
   const secondDropdownData = React.useMemo(() => ({
     'Standard Double': 62,
@@ -102,7 +102,6 @@ const BookingForm = () => {
     //Make a POST request using Axios
     try {
       const response = await axios.post(apiUrl, postData);
-      console.log('Response:', response.data.status_code);
       if (response.data.status_code === 200) {
         toast.success(response.data.message)
         localStorage.setItem("bookingInfo", JSON.stringify(response.data));

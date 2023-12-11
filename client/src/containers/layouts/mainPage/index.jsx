@@ -10,7 +10,7 @@ import { Outlet } from 'react-router-dom'
 const LandingPageLayout = () => {
   let parsedData;
   const storedData = localStorage.getItem("userInfo");
-console.log('storedData:', storedData);
+// console.log('storedData:', storedData);
 if (storedData) {
   try {
     parsedData = JSON.parse(storedData);
@@ -18,7 +18,7 @@ if (storedData) {
     console.error('Error parsing storedData:', error);
   }
   if (parsedData && typeof parsedData === 'object') {
-    console.log(parsedData?.logged_in);
+    // console.log(parsedData?.logged_in);
   }
 }
   return (
@@ -31,9 +31,9 @@ if (storedData) {
 
                 />
             </header>
-            <body>
+            <main>
             <Outlet/>
-            </body>
+            </main>
             
            <div className="faq-section">
             <Faq/>

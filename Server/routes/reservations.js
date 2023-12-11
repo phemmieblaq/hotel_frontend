@@ -8,8 +8,6 @@ router.post("/", async (req, res) => {
 
     const data = {
         "reservation": { "data": [], "status_code": NaN, "message": "" },
-        "food": { "data": [], "status_code": NaN, "message": "" },
-        "drinks": { "data": [], "status_code": NaN, "message": "" },
         "cNo": cNo
     }
     // Reservation
@@ -37,6 +35,14 @@ router.post("/", async (req, res) => {
         data.reservation.message = "load Unsuccessful " + error,
             data.reservation.status_code = 404
     }
+    res.send(data)
+});
+
+router.get("/", async (req, res) => {
+    const data = {
+        "food": { "data": [], "status_code": NaN, "message": "" },
+    }
+
     // Food & Drinks
     try {
         response = await databaseFood.getFood()
@@ -45,6 +51,22 @@ router.post("/", async (req, res) => {
         data.food.data = response.rows
         data.food.status_code = 200
 
+    } catch (error) {
+        data.food.message = "load Unsuccessful " + error,
+            data.food.status_code = 404
+        data.drinks.message = "load Unsuccessful " + error,
+            data.drinks.status_code = 404
+    }
+    res.send(data)
+});
+
+router.get("/drinks", async (req, res) => {
+    const data = {
+        "drinks": { "data": [], "status_code": NaN, "message": "" },
+    }
+
+    // Food & Drinks
+    try {
         response = await databaseFood.getDrinks()
         data.drinks.message = "Successfully got drinks"
         data.drinks.data = response.rows
@@ -56,7 +78,6 @@ router.post("/", async (req, res) => {
         data.drinks.message = "load Unsuccessful " + error,
             data.drinks.status_code = 404
     }
-
     res.send(data)
 });
 

@@ -30,7 +30,6 @@ const Header = ({ admin, handleSelect}) => {
     }
 
     let navigate = useNavigate();
-    const options = ['Receptionist', 'HouseKeeper']
 
     const homeNavigation = () => {
         navigate('/')
@@ -39,14 +38,17 @@ const Header = ({ admin, handleSelect}) => {
     const logInNavigation = () => {
         navigate('/signin')
     }
+    const bookingNavigation = () => {
+        navigate('/booking')
+    }
     const matches = useMediaQuery("(max-width:1305px)");
     return (
         <div>
             <div className="allWrapper">
                 <div className="innerWrapper">
-                    <div className="logoWrapper">
+                    <div className="logoWrapper" onClick={homeNavigation}>
                         <div>
-                            <img src={MainCrownLogo} alt="logo" onClick={homeNavigation} />
+                            <img src={MainCrownLogo} alt="logo" />
 
                         </div>
                         <h1 >Crown Hotel</h1>
@@ -73,7 +75,7 @@ const Header = ({ admin, handleSelect}) => {
                                 <p onClick={logInNavigation} className='text' > Log in </p>
                             </div>
                             <div className="contactWrapper">
-                                <Button title='Book Now' />
+                                <Button title='Book Now' onClick={bookingNavigation}/>
 
                             </div>
                         </div>}
