@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import './style.css'
 import Header from '../../header'
-
-import Faq from '../../faq'
-import Footer from '../../footer'
-import { Outlet } from 'react-router-dom'
 import AnalyticCard from '../../../components/cards/analyticCard'
 import Receptionist from '../../../pages/receptionist'
 

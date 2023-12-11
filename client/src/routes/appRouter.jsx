@@ -24,6 +24,12 @@ const AppRouter = () => {
     <Suspense >
       <Router>
         <Routes>
+           
+        <Route path="/admin" element={ <AdminLayout />}  >
+                  <Route index element={<Receptionist />} />
+
+
+                   </Route>  
           <Route path="/" element={<LandingPageLayout />}>
             <Route index element={<Home />} />
             <Route path="experience" element={<Experience />} />
@@ -39,6 +45,7 @@ const AppRouter = () => {
             <Route path="accomodation" element={<Outlet />}>
               <Route index element={<Accomodation />} />
               <Route path=":roomCode" element={<DetailsPage />} />
+             
             </Route>
           </Route>
         </Routes>
