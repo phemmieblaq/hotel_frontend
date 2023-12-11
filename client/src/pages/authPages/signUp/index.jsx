@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { userRegistrationSchema } from '../authSchema';
 import { useNavigate } from 'react-router-dom'
 import Drawer from '../../../containers/drawer'
+import axios from 'axios'
 
 const SignUp = () => {
   let navigate =useNavigate();
@@ -16,7 +17,10 @@ const SignUp = () => {
   const signInNavigation = ()=>{
       navigate('/signin')
   }
-  
+   
+
+// Define the API endpoint URL
+const apiUrl = 'http://localhost:3001/signup';
 
   const {
     handleSubmit,
@@ -30,9 +34,32 @@ const SignUp = () => {
     setValue("phone", value, { shouldValidate: true });
   };
 
-  const submitForm =(data)=>{
-    console.log(data);
+  const submitForm =async(formData)=>{
+    
+    const postData = {
+      "name": formData.full_name,
+      "email": formData.email,
+      "phone_no":formData.phone,
+      "password":formData.password,
   }
+    // Make a POST request using Axios
+    try {
+      const response = await axios.post(apiUrl, postData);
+      console.log('Response:', response.data);
+     
+      localStorage.setItem("userInfo", JSON.stringify(response.data));
+    
+    
+
+    } catch (error) {
+      // Handle the error
+      console.error('Error:', error.message);
+
+    }
+
+  // localStorage.setItem("userEmail", formData.email);
+  }
+  
 
   return (
     <>

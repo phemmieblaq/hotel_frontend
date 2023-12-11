@@ -8,4 +8,5 @@ export const bookingSchema = yup.object().shape({
  
   
     roomTypes: yup.string().required("pick the choice of your rooms "),
+    cost: yup.number(),
   });

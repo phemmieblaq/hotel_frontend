@@ -7,76 +7,76 @@ import wifi from '../../../assets/svg/wifi.svg';
 
 import './style.css'
 import Button from '../../button';
-const HotelCard = ({onClick=()=>{},title ='Deluxe Room' , price='$45/night', size,noOfPeople, accomodation,description1, description2, img=doubleBed}) => {
-  return (
-    <div className='Wrapper'>
-        <div className="image-wrapper">
-            <img src={img} alt="hotel" />
+const HotelCard = ({ onClick = () => { }, title = 'Deluxe Room', price = '$45/night', size, noOfPeople, accomodation, description1, description2, img = doubleBed }) => {
+    return (
+        <div className='Wrapper'>
+            <div className="image-wrapper">
+                <img src={img} alt="hotel" />
 
-        </div>
-        <div >
-            <h1 className="title"> {title}</h1>
-            <div className="lower-wrapper">
-                <div className="icon-text">
-                    <div className="image-wrapper">
-                    <img src={house} alt="" /> 
-                   
+            </div>
+            <div >
+                <h1 className="title"> {title}</h1>
+                <div className="lower-wrapper">
+                    <div className="icon-text">
+                        <div className="image-wrapper">
+                            <img src={house} alt="" />
+
+                        </div>
+                        <p> {size}</p>
                     </div>
-                    <p> {size}</p>
+                    <div className="icon-text">
+                        <div className="image-wrapper">
+                            <img src={people} alt="" />
+
+                        </div>
+                        <p> {noOfPeople} {noOfPeople > 1 ? 'Adults' : 'Adult'}</p>
+                    </div>
+
                 </div>
-                <div className="icon-text">
-                    <div className="image-wrapper">
-                    <img src={people} alt="" /> 
-                   
+                <div className="loweset-wrapper">
+                    <div className="icon-text">
+                        <div className="icon" />
+
+                        <p> {description1}</p>
+
                     </div>
-                    <p> {noOfPeople} {noOfPeople > 1?'Adults':'Adult'}</p>
+                    <div className="icon-text">
+                        <div className="icon" />
+
+                        <p> {description2}</p>
+                    </div>
+
+
                 </div>
 
-                 </div>
-                 <div className="loweset-wrapper">
+
+                <h2>ALL ROOMS INCLUDE</h2>
                 <div className="icon-text">
-                    <div className="icon"/>
-                
-                    <p> {description1}</p>
-                    
-                </div>
-                <div className="icon-text">
-                <div className="icon"/>
-                   
-                <p> {description2}</p>
-                    </div>
-               
-                
-                 </div>
-                 
-                 
-                 <h2>ALL ROOMS INCLUDE</h2>
-                 <div className="icon-text">
                     <div className="image-wrapper">
-                    <img src={wifi} alt="" /> 
-                   
+                        <img src={wifi} alt="" />
+
                     </div>
                     <p> Complementary high-speed Wifi</p>
                 </div>
 
-        <div className="lastWrapper">
-            <p className="price">
-            &#163;{price}/night
-            </p>
-            <div className="buttonWrapper">
-            <Button
-      title ={accomodation? 'View Details':'Book Now'}
-      secondary
-      onClick={onClick}/>
-      </div>
+                <div className="lastWrapper">
+                    <p className="price">
+                        &#163;{price}/night
+                    </p>
+                    <div className="buttonWrapper">
+                        <Button
+                            title={accomodation ? 'View Details' : 'Book Now'}
+                            secondary
+                            onClick={onClick} />
+                    </div>
+                </div>
+
+
+
+            </div>
+
         </div>
-
-
-
-        </div>
-      
-    </div>
-  )
+    )
 }
 
 export default HotelCard

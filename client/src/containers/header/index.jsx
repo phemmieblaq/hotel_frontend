@@ -30,6 +30,7 @@ const Header = ({ admin, handleSelect}) => {
     }
 
     let navigate = useNavigate();
+    const options = ['Receptionist', 'HouseKeeper']
 
     const homeNavigation = () => {
         navigate('/')
@@ -46,6 +47,7 @@ const Header = ({ admin, handleSelect}) => {
                     <div className="logoWrapper">
                         <div>
                             <img src={MainCrownLogo} alt="logo" onClick={homeNavigation} />
+
                         </div>
                         <h1 >Crown Hotel</h1>
                     </div>
@@ -72,15 +74,18 @@ const Header = ({ admin, handleSelect}) => {
                             </div>
                             <div className="contactWrapper">
                                 <Button title='Book Now' />
+
                             </div>
                         </div>}
                     {admin &&
                         <div className="dropWrapper">
                             <DropDownInput options={['Reception', 'Housekeeper']} onSelect={handleHeaderDropdownSelect} />
+
                         </div>
                     }
                     {matches && !toggle && !admin && (
                         <div className="harmburgerWrapper">
+
                             <div>
                                 <img src={hamburger} alt="logo" onClick={handleToggle} />
                             </div>
@@ -88,6 +93,7 @@ const Header = ({ admin, handleSelect}) => {
                 </div>
             </div>
             {matches && toggle && <Drawer action={handleClose} />}
+
         </div>
     )
 }

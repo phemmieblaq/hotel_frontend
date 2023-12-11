@@ -22,7 +22,7 @@ const Accomodation = () => {
     try {
       const response = await axios.get('http://localhost:3001/accommodation'); // Adjust the API endpoint accordingly
       console.log('Data from backend:', response.data);
-      setAccommodations(response.data)
+      setAccommodations(response.data.data)
     } catch (error) {
       console.error('Error fetching data from backend:', error);
     }
@@ -36,10 +36,10 @@ const Accomodation = () => {
  
   let navigate = useNavigate();
   
-  const handleRoomClick = (roomCode) => {
- 
-    console.log(roomCode)
-    navigate(`/accomodation/${roomCode}`);
+  const handleBooking = (selectedItem) => {
+    console.log(selectedItem)
+    localStorage.setItem("bookingCard", JSON.stringify(selectedItem));
+    navigate('/booking');
   };
   return (
     <div>
@@ -63,8 +63,8 @@ title='Accomodation'/>
              description1={el?.description1}
              description2={el?.description2}
              img={el?.r_class==='std_t'? standardTwin : el?.r_class==='std_d'? standardDouble: el?.r_class==='sup_t'? superiorTwin: el?.r_class==='sup_d'? superiorDouble: ''}
-             accomodation 
-             onClick={() => handleRoomClick(el?.r_class)}/>
+             
+             onClick={() => handleBooking(el)}/>
           </div>
         
         ))}

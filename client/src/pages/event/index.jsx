@@ -21,7 +21,7 @@ const EventRooms = () => {
     try {
       const response = await axios.get('http://localhost:3001/events'); // Adjust the API endpoint accordingly
       console.log('Data from backend:', response.data);
-      setEvents(response.data)
+      setEvents(response.data.data)
     } catch (error) {
       console.error('Error fetching data from backend:', error);
     }

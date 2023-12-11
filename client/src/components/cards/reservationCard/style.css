@@ -8,7 +8,7 @@
 
 
 .reservationWrapper{
-    width: 819px;
+   max-width: 819px;
     border-radius: 24px;
     background: #FFF;
     padding-top: 25px;
