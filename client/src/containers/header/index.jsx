@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MainCrownLogo from '../../assets/svg/MainCrownLogo.svg'
 import hamburger from '../../assets/svg/hamburger.svg'
 
@@ -16,6 +16,8 @@ import DropDownInput from '../../components/input/dropDownInput';
 
 
 const Header = ({ admin, handleSelect}) => {
+    const [userData, setUserData] = useState(null);
+
     const handleHeaderDropdownSelect = (selectedValue) => {     // Set the headerDropdownvalue to be the selected one
         handleSelect(selectedValue);
     };
@@ -38,9 +40,29 @@ const Header = ({ admin, handleSelect}) => {
     const logInNavigation = () => {
         navigate('/signin')
     }
+    const logOutNavigation = () => {
+        localStorage.clear();
+        navigate('/signin')
+        window.location.reload();
+        
+    }
     const bookingNavigation = () => {
         navigate('/booking')
     }
+
+    useEffect(() => {
+        // Retrieve data from localStorage
+        const storedData = localStorage.getItem("userInfo");
+    
+    
+        // Parse the stored data if it exists
+        if (storedData) {
+          const parsedData = JSON.parse(storedData);
+          setUserData(parsedData);
+        }
+    
+      }, []);
+      console.log('userdata', userData)
     const matches = useMediaQuery("(max-width:1305px)");
     return (
         <div>
@@ -59,9 +81,10 @@ const Header = ({ admin, handleSelect}) => {
                                 <ActiveNav path={el?.path} text={el?.title} key={index} />
                             ))}
                         </div>}
-                    {!admin &&
+                   
 
                         <div className="subWrapper">
+                        {!admin &&
                             <div className="contactWrapper">
                                 <div className="logoWrapper">
                                     <div>
@@ -69,16 +92,19 @@ const Header = ({ admin, handleSelect}) => {
                                     </div>
                                     <p> 016324 8934 </p>
                                 </div>
-                            </div>
+                            </div>}
 
                             <div className="contactWrapper">
-                                <p onClick={logInNavigation} className='text' > Log in </p>
+                                {userData?.logged_in ?
+                                <p onClick={logOutNavigation} className='text' > Log out </p>
+                            : <p onClick={logInNavigation} className='text' > Log in </p>}
                             </div>
+                            {!admin &&
                             <div className="contactWrapper">
                                 <Button title='Book Now' onClick={bookingNavigation}/>
 
-                            </div>
-                        </div>}
+                            </div>}
+                        </div>
                     {admin &&
                         <div className="dropWrapper">
                             <DropDownInput Options={options} setValue={handleHeaderDropdownSelect} initialValue={options[0]}/>

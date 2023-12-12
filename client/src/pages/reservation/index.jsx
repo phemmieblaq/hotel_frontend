@@ -51,11 +51,15 @@ const Reservation = () => {
   }, [cNo]);
 
   let reservations = reservationData?.data?.reservation?.data
+  console.log(reservations?.length)
   return (
     <div>
       <p className="main-heading">Reservation details</p>
 
       <p className="sub_heading">Your reservations</p>
+      {(reservations?.length ===undefined || reservations?.length===0) &&
+
+      <p className="main-heading">No reservation added yet</p>}
 
       {reservations?.map((el, index) => (
         <ReservationCard

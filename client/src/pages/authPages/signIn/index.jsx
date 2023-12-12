@@ -53,13 +53,14 @@ const SignIn = () => {
       console.log('Response:', response.data);
 
       localStorage.setItem("userInfo", JSON.stringify(response.data));
-      if (response.data.status_code == 200) {
+      if (response.data.status_code === 200) {
         toast.success('login successfully');
         staffCheck
           ? navigate("/admin")
           : navigate("/");
+          window.location.reload();
       }
-      else if(response.data.status_code == 404){
+      else if(response.data.status_code === 404){
         toast.error('No Account associated with this email');
       }
       else {
