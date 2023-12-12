@@ -13,15 +13,15 @@
   outline: none;
 }
 
-.flag-dropdown {
-}
+/* .flag-dropdown {
+} */
 
 .selected-flag {
   width: 60px !important;
   padding-left: 20px !important;
 }
-.country-list {
-}
+/* .country-list {
+} */
 .country {
   height: 50px;
   border-bottom: 1px solid #ececec;

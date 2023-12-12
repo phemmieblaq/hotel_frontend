@@ -15,18 +15,21 @@ const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
         'X': ['--Select--', 'Check In'],
         'A': ['--Select--'],
         'O': ['--Select--', 'Check Out'],
-        'C': ['--Select--'],
+        'C': ['--Select--']
       },
-      'Housekeeper': {
+      'HouseKeeper': {
         'X': ['--Select--'],
         'A': ['--Select--'],
         'O': ['--Select--'],
-        'C': ['--Select--', 'Cleaned'],
-      },
+        'C': ['--Select--', 'Cleaned']
+      }
     };
   
     // Get options based on user and status
-    const selectedOptions = optionsMap[user]?.[status] || ['--Select--'];
+    const selectedOptions = optionsMap[user]?.[status] || ['--Select9--'];
+
+    console.log("user: " + user, " status: " + status + " Selected Option: " + selectedOptions)
+
   
     // Update the state with the selected options
     setOptions(selectedOptions);
@@ -92,7 +95,7 @@ const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
         <h2> {ref_no ? `Ref Number: ${ref_no}` : null}</h2>
         <h2> {date ? `Date: ${date}` : null}</h2>
         <div>
-          <DropDownInput options={options} onSelect={handleDropdownSelect} />
+          <DropDownInput Options={options} setValue={handleDropdownSelect} initialValue={options[0]}/>
         </div>
     </div>
   );

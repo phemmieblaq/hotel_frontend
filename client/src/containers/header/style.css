@@ -13,7 +13,8 @@
     left: 0;
     z-index: 20;
 
-    overflow-x: hidden;
+    /* overflow-x: hidden;
+    overflow-y: visible; */
 
     @media screen and (max-width: 800px) {
         padding: 54px 16px 32px 16px;
@@ -26,7 +27,7 @@
     display: flex;
 
     justify-content: space-between;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 100%;
     align-items: center;
 

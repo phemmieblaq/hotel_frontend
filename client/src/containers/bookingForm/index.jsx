@@ -6,7 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import DropDownInput from '../../components/input/dropDownInput'
 import { bookingSchema } from './bookingSchema'
-import StatusCard from '../../components/cards/statusCard'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -146,7 +145,7 @@ const BookingForm = () => {
               Options={options}
               label="Room Types"
               name="roomTypes"
-              initialValue='select'
+              initialValue='Select'
               setValue={handleGuestChange}
               errorMessage={errors.roomTypes?.message}/>
 

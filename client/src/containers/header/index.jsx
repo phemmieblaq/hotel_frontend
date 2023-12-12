@@ -81,7 +81,7 @@ const Header = ({ admin, handleSelect}) => {
                         </div>}
                     {admin &&
                         <div className="dropWrapper">
-                            <DropDownInput options={options} onSelect={handleHeaderDropdownSelect} />
+                            <DropDownInput Options={options} setValue={handleHeaderDropdownSelect} initialValue={options[0]}/>
 
                         </div>
                     }

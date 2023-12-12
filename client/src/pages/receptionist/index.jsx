@@ -114,9 +114,10 @@ const Receptionist = ({user}) => {
           {/* {dropdown} */}
         </div>
         <div className="cardMap">
-          {rooms.map((el, index) => (
-            <StatusCard key={index} roomNum={el.roomNumber} roomType={el.title} date={el.date} ref_no={el.ref_no} user={user} status={el.status}/>
-          ))}
+          {rooms.map((el, index) => {
+            // console.log(el)
+            return <StatusCard key={index} roomNum={el.roomNumber} roomType={el.title} date={el.date} ref_no={el.ref_no} user={user} status={el.status}/>
+          })}
         </div>
 
       </div>
