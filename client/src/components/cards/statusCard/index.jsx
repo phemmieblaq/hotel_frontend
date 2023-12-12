@@ -11,7 +11,7 @@ const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
   const handleSelect = (user, status) => {
     // Define a mapping or lookup object for options
     const optionsMap = {
-      'Reception': {
+      'Receptionist': {
         'X': ['--Select--', 'Check In'],
         'A': ['--Select--'],
         'O': ['--Select--', 'Check Out'],
@@ -26,7 +26,7 @@ const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
     };
   
     // Get options based on user and status
-    const selectedOptions = optionsMap[user]?.[status] || ['--Select9--'];
+    const selectedOptions = optionsMap[user]?.[status] || ['--Select--'];
 
     console.log("user: " + user, " status: " + status + " Selected Option: " + selectedOptions)
 
