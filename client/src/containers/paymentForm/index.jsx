@@ -8,6 +8,19 @@ import { paymentSchema } from './paymentSchema'
 import axios from 'axios'
 
 const PaymentForm = () => {
+  // Make a POST to get the price of the bookig
+  const get_price = async () => {
+    try {
+      const response = await axios.post('http://localhost:3001/payment/price');
+      console.log(response)
+
+    }
+    catch (error) {
+      console.error(error)
+    }
+  }
+
+  let rrr = get_price
   const storedPrice = localStorage.getItem("price")
   // console.log(storedPrice)
   const {

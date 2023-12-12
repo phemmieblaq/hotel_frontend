@@ -1,6 +1,37 @@
 const express = require('express');
 const router = express.Router();
 const database = require("../database_queries/customer");
+const database_rooms = require("../database_queries/rooms")
+
+router.post('/price', async (req,res) =>{
+    const ref = req.body["r_ref"]
+    const data = {
+        "price": null
+    }
+
+    try {
+        let response = database_rooms.getPrice(ref)
+        response = response.rows
+        console.log(response.rows)
+    } catch (error) {
+        
+    }
+})
+
+router.post('/add', async (req,res) =>{
+    const ref = req.body["r_ref"]
+    const data = {
+        "price": null
+    }
+
+    try {
+        let response = database_rooms(ref)
+        response = response.rows
+        console.log(response.rows)
+    } catch (error) {
+        
+    }
+})
 
 router.post('/', async (req, res) => {
     // Get the username and password from the json 

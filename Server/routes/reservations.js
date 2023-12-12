@@ -81,4 +81,24 @@ router.get("/drinks", async (req, res) => {
     res.send(data)
 });
 
+router.post("/drinks", async (req, res) => {
+    const r_ref = req.body["r_ref"]
+    const val = req.body["price"]
+
+    const data = {
+        "message": ""
+    }
+
+    // Food & Drinks
+    try {
+        response = await databaseFood.addDrinks(r_ref, val)
+        data.message = "Successfully added drinks to tab"
+
+    } catch (error) {
+        data.message = "load Unsuccessful " + error
+
+    }
+    res.send(data)
+});
+
 module.exports = router;

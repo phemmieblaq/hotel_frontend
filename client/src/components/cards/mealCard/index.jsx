@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../../button'
 import meal1 from '../../../assets/meal/meal1.png'
 import './style.css'
-const MealCard = ({ mealTitle, price, img = meal1 }) => {
+const MealCard = ({ mealTitle, price, img = meal1 , fun}) => {
     return (
 
         <div className="mealContainer">
@@ -16,7 +16,7 @@ const MealCard = ({ mealTitle, price, img = meal1 }) => {
                         {price}
                     </div>
                     <div className="cartButtonWrapper">
-                        <Button title='add to cart' secondary />
+                        <Button title='add to cart' secondary onClick={fun}/>
                     </div>
                 </div>
             </div>

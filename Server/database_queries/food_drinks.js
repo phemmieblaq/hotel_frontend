@@ -44,7 +44,29 @@ async function getDrinks(){
     return response
 }
 
+async function addDrinks(r_ref, value){
+    const qry = `   UPDATE booking
+    SET
+      b_cost = b_cost + ${value},
+      b_outstanding = b_outstanding + ${value}
+    WHERE
+      b_ref = ${r_ref};
+    `;
+
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error getting Food data: " + error;
+    }
+    return response
+}
+
 module.exports = {
     getFood,
-    getDrinks
+    getDrinks,
+    addDrinks
 }
