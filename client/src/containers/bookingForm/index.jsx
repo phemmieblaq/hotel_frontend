@@ -96,7 +96,7 @@ const BookingForm = () => {
       "check_in": formData?.checkInDate,
       "check_out": formData?.checkOutDate
     }
-    console.log(postData);
+    // console.log(postData);
 
     //Make a POST request using Axios
     try {

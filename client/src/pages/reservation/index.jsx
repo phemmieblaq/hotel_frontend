@@ -16,7 +16,6 @@ const Reservation = () => {
 
   useEffect(() => {
     // Retrieve data from localStorage
-
     const storedData = localStorage.getItem("userInfo");
 
 
@@ -73,16 +72,8 @@ const Reservation = () => {
 
       <div className="fullLength">
         <div className="meal_LinkWrapper">
-          <div className="firstNav">
-            <ActiveNavLink
-              path='/reservations'
-              text='foods' />
-          </div>
-          <div className="secondNav">
-            <ActiveNavLink
-              path='/reservations/drinks'
-              text='Drinks' />
-          </div>
+          <div className="firstNav"><ActiveNavLink path='/reservations' text='foods' /></div>
+          <div className="secondNav"><ActiveNavLink path='/reservations/drinks' text='Drinks' /></div>
         </div>
       </div>
 

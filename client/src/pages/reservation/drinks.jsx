@@ -7,7 +7,7 @@ const Drinks = () => {
   const [drinksData, setDrinksData] = useState([]);
 
   const getDrinks = async () => {
-    //Make a POST request using Axios
+    //Make a GET request using Axios
     try {
       const response = await axios.get('http://localhost:3001/reservations/drinks');
 

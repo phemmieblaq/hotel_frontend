@@ -43,7 +43,8 @@ router.post("/", async (req, res) => {
                 "notes": bNotes,
                 "class": rClass,
                 "check_in": checkIn,
-                "check_out": checkOut
+                "check_out": checkOut,
+                "booking_ref": bRef
             },
             "status_code": 200
         };
