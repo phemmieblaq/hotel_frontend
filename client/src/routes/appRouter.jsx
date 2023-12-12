@@ -40,9 +40,9 @@ const AppRouter = () => {
             <Route path="forgotpassword" element={<ForgotPassword />} />
             <Route path="booking" element={<BookingForm />} />
             <Route path="payment" element={<PaymentForm />} />
-            <Route path="booking-confirmation" element={<Confirmation />}>
+            <Route path="booking-confirmation/:booking_ref" element={<Confirmation />}>
               <Route index element={<Food />} />
-              <Route path='/booking-confirmation/drinks' element={<Drinks />} />
+              <Route path='drinks' element={<Drinks />} />
             </Route>
             <Route path="reservations" element={<Reservation />}>
               <Route index element={<Food />} />

@@ -2,10 +2,13 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import MealCard from '../../components/cards/mealCard'
+import { useParams } from 'react-router-dom';
 
 
 
 const Food = () => {
+  const { booking_ref } = useParams();
+  // console.log("Food" + booking_ref)
   const [foodData, setFoodData] = useState([]);
 
   const getFood = async () => {

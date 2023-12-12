@@ -73,7 +73,7 @@ const BookingForm = () => {
 
   }, []);
 
-  console.log(bookingData)
+  // console.log(bookingData)
   // console.log(userData);
   const apiUrl = 'http://localhost:3001/booking';
   // Populates the email to help the user 
@@ -103,15 +103,17 @@ const BookingForm = () => {
       const response = await axios.post(apiUrl, postData);
       if (response.data.status_code === 200) {
         toast.success(response.data.message)
-        localStorage.setItem("bookingInfo", JSON.stringify(response.data));
-        navigate('/booking-confirmation')
+        localStorage.setItem("rrr", response.data.data.booking_ref);
+        // console.log(response.data.data.booking_ref)
+
+        navigate(`/booking-confirmation/${response.data.data.booking_ref}`)
       }
       else {
         toast.error('error 403')
       }
     } catch (error) {
       // Handle the error
-      console.error('Error:', error.message);
+      console.error('Error3:', error.message);
     }
   }
   return (

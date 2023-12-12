@@ -114,8 +114,23 @@ async function getAllCheckOutRooms(){
 }
 
 // Update room availability
-async function updateRoomAvaliability(r_no, r_status, r_ref){
+async function updateRoomAvaliability(r_no, r_status){
     const qry = `UPDATE room SET r_status = '${r_status}' WHERE r_no = ${r_no};
+                `;
+
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error getting reservation data: " + error;
+    }
+    return response
+}
+async function updateRoomAvaliability2(r_ref, r_status){
+    const qry = `
                 UPDATE roombooking SET r_status = '${r_status}' WHERE b_ref = ${r_ref}
                 `;
 
@@ -152,6 +167,7 @@ module.exports = {
     getAllCheckOutRooms,
     getAllCheckedInRooms,
     updateRoomAvaliability,
+    updateRoomAvaliability2,
     getRandomRoom,
     getRatesForClass,
     getPrice

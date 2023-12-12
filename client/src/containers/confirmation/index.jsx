@@ -20,17 +20,16 @@ const Confirmation = () => {
 
   useEffect(() => {
     // Retrieve data from localStorage
-    const storedData = localStorage.getItem("bookingInfo");
+    const storedData = localStorage.getItem("rrr");
 
     // Parse the stored data if it exists
     if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setBookingData(parsedData.data);
+      setBookingData(storedData);
     }
   }, []);
 
   const correspondingKey = Object.keys(RealBackendRoomtype).find((key) => RealBackendRoomtype[key] === bookingData?.class);
-  console.log(bookingData.booking_ref)
+  // console.log(bookingData)
   return (
     <div className='mainBookingWrapper'>
       <div className="bookWrapper">
@@ -56,8 +55,8 @@ const Confirmation = () => {
 
         <div className="fullLength">
           <div className="meal_LinkWrapper">
-            <div className="firstNav"><ActiveNavLink path='/booking-confirmation' text='foods' /></div>
-            <div className="secondNav"><ActiveNavLink path='/booking-confirmation/drinks' text='Drinks' /></div>
+            <div className="firstNav"><ActiveNavLink path={`/booking-confirmation/${bookingData}`} text='foods' /></div>
+            <div className="secondNav"><ActiveNavLink path={`/booking-confirmation/${bookingData}/drinks`} text='Drinks' /></div>
           </div>
         </div>
 

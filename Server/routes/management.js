@@ -85,6 +85,8 @@ router.post("/reception/check_in", async (req,res) =>{
     
     try{
         await database_rooms.updateRoomAvaliability(room_number, "O", ref_number)
+        await database_rooms.updateRoomAvaliability2(ref_number, "O", )
+
         data.message = "Successfully Updated Room Status"
         data.status_code = 200
 
@@ -106,7 +108,9 @@ router.post("/reception/check_out", async (req,res) =>{
     }
     
     try{
-        // await database_rooms.updateRoomAvaliability(room_number, "C", ref_number)
+        await database_rooms.updateRoomAvaliability(room_number, "C", ref_number)
+        await database_rooms.updateRoomAvaliability2(ref_number, "C")
+
         let response = await database_rooms.getPrice(ref_number)
         data.price = response.rows[0].b_outstanding
         data.message = "Successfully Checked out"
@@ -139,23 +143,23 @@ router.post("/housekeeping/cleaned", async (req,res) =>{
     res.send(data)
 })
 
-router.post("/housekeeping/cleaning", async (req,res) =>{
-    const room_number = req.body["r_no"];
+// router.post("/housekeeping/cleaning", async (req,res) =>{
+//     const room_number = req.body["r_no"];
 
-    const data = {
-        "message": "",
-        "status_code": null
-    }
+//     const data = {
+//         "message": "",
+//         "status_code": null
+//     }
     
-    try{
-        await database_rooms.updateRoomAvaliability(room_number, "C")
-        data.message = "Successfully Updated Room Status"
-        data.status_code = 200
+//     try{
+//         await database_rooms.updateRoomAvaliability(room_number, "C")
+//         data.message = "Successfully Updated Room Status"
+//         data.status_code = 200
 
-    } catch (error){
-        data.message = "Error Updating room status: " + error
-        data.status_code = 402
-    }
-    res.send(data)
-})
+//     } catch (error){
+//         data.message = "Error Updating room status: " + error
+//         data.status_code = 402
+//     }
+//     res.send(data)
+// })
 module.exports = router;
