@@ -4,8 +4,12 @@ import DropDownInput from '../../input/dropDownInput';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
+  let navigate = useNavigate();
+
   const [options, setOptions] = useState(['--Select--', 'Check In']); // State to manage options dynamically
 
   const handleSelect = (user, status) => {
@@ -28,8 +32,6 @@ const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
     // Get options based on user and status
     const selectedOptions = optionsMap[user]?.[status] || ['--Select--'];
 
-    console.log("user: " + user, " status: " + status + " Selected Option: " + selectedOptions)
-
   
     // Update the state with the selected options
     setOptions(selectedOptions);
@@ -49,6 +51,7 @@ const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
       try {
         const response = await axios.post('http://localhost:3001/management/reception/check_in', {
           r_no: roomNum,
+          r_ref: ref_no
         });
 
         // Handle the response as needed
@@ -63,12 +66,15 @@ const StatusCard = ({ roomNum, roomType, date, ref_no, user, status}) => {
       try {
         const response = await axios.post('http://localhost:3001/management/reception/check_out', {
           r_no: roomNum,
+          r_ref: ref_no
         });
 
         // Handle the response as needed
-        console.log('Check-Out response:', response.data);
+        console.log('Check-Out response:', response.data.price);
         // Display a success message
-        toast.success('Checked out!');   
+        toast.success('Checked out!'); 
+        localStorage.setItem("price", response.data.price);
+        navigate('/payment')  
       } catch (error) {
         console.error('Error making check-in request:', error);
       }

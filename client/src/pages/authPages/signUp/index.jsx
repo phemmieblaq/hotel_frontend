@@ -12,15 +12,15 @@ import Drawer from '../../../containers/drawer'
 import axios from 'axios'
 
 const SignUp = () => {
-  let navigate =useNavigate();
+  let navigate = useNavigate();
 
-  const signInNavigation = ()=>{
-      navigate('/signin')
+  const signInNavigation = () => {
+    navigate('/signin')
   }
-   
 
-// Define the API endpoint URL
-const apiUrl = 'http://localhost:3001/signup';
+
+  // Define the API endpoint URL
+  const apiUrl = 'http://localhost:3001/signup';
 
   const {
     handleSubmit,
@@ -34,22 +34,22 @@ const apiUrl = 'http://localhost:3001/signup';
     setValue("phone", value, { shouldValidate: true });
   };
 
-  const submitForm =async(formData)=>{
-    
+  const submitForm = async (formData) => {
+
     const postData = {
       "name": formData.full_name,
       "email": formData.email,
-      "phone_no":formData.phone,
-      "password":formData.password,
-  }
+      "phone_no": formData.phone,
+      "password": formData.password,
+    }
     // Make a POST request using Axios
     try {
       const response = await axios.post(apiUrl, postData);
       console.log('Response:', response.data);
-     
+
       localStorage.setItem("userInfo", JSON.stringify(response.data));
-    
-    
+
+
 
     } catch (error) {
       // Handle the error
@@ -57,61 +57,61 @@ const apiUrl = 'http://localhost:3001/signup';
 
     }
 
-  // localStorage.setItem("userEmail", formData.email);
+    // localStorage.setItem("userEmail", formData.email);
   }
-  
+
 
   return (
     <>
-    <div className='top_Wrapper'>
-      <div className='mainAuthWrapper'>
-      <AuthLayout
-      heading='Create an account'
-      subHeading='Provide the required information to create an account'
-      >
-     
-        <form onSubmit={handleSubmit(submitForm)}>
-        <InputWithLabel
-        label='Full name'
-        type='text'
-        name="full_name"
+      <div className='top_Wrapper'>
+        <div className='mainAuthWrapper'>
+          <AuthLayout
+            heading='Create an account'
+            subHeading='Provide the required information to create an account'
+          >
+
+            <form onSubmit={handleSubmit(submitForm)}>
+              <InputWithLabel
+                label='Full name'
+                type='text'
+                name="full_name"
                 register={register}
-                errorMessage={errors.full_name?.message}/>
-        <InputWithLabel
-        label='Email'
-        type='email'
-       
+                errorMessage={errors.full_name?.message} />
+              <InputWithLabel
+                label='Email'
+                type='email'
+
                 name="email"
                 register={register}
-                errorMessage={errors.email?.message}/>
-        <NumberInput
-        label='Phone number'
-        name="phone"
+                errorMessage={errors.email?.message} />
+              <NumberInput
+                label='Phone number'
+                name="phone"
                 type="number"
                 onChange={handleNumberChange}
                 register={register}
-                errorMessage={errors.phone?.message}/>
-         <InputWithLabel
-        label='Password'
-        type='password'
-        name="password"
+                errorMessage={errors.phone?.message} />
+              <InputWithLabel
+                label='Password'
+                type='password'
+                name="password"
                 register={register}
-                errorMessage={errors.password?.message}/>
-         <div className="signUpWrapper">
-            <Button
-      title ='Sign up '
-      type="submit"
-     />
+                errorMessage={errors.password?.message} />
+              <div className="signUpWrapper">
+                <Button
+                  title='Sign up '
+                  type="submit"
+                />
 
+              </div>
+            </form>
+            <p className='bottomText'>
+              Already have an account? <span onClick={signInNavigation}>Sign In</span>
+            </p>
+
+          </AuthLayout>
+        </div>
       </div>
-      </form>
-      <p className='bottomText'>
-      Already have an account? <span onClick={signInNavigation}>Sign In</span> 
-      </p>
-      
-      </AuthLayout>
-      </div>
-    </div>
     </>
   )
 }

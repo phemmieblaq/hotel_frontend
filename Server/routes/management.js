@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
     const available_rooms = await database_rooms.getAllAvailableRooms();
 
     // Select the number of available rooms
-    const unavailable_rooms = await database_rooms.getAllUnavailableRooms();
+    const unavailable_rooms = await database_rooms.getAllCheckedInRooms();
 
     // Select the number of checked out rooms
     const checked_out = await database_rooms.getAllCheckOutRooms();
@@ -35,35 +35,37 @@ router.get("/", async (req, res) => {
     // Append the data to send to ejs file
     const data = {
         "bookings": {
-            "no": allBookings.rowCount,
-            "room_no": allBookings.rows.map(row => row.r_no),
-            "check_in": allBookings.rows.map(row => row.checkin),
-            "check_out": allBookings.rows.map(row => row.checkout),
-            "room_status": allBookings.rows.map(row => row.r_status),
-            "room_notes": allBookings.rows.map(row => row.r_notes),
-            "booking_ref": allBookings.rows.map(row => row.b_ref),
-            "room_type": allBookings.rows.map(row => row.r_class),
+            "no": allBookings?allBookings.rowCount:0,
+            "room_no": allBookings?allBookings.rows.map(row => row.r_no):[],
+            "check_in": allBookings?allBookings.rows.map(row => row.checkin):[],
+            "check_out": allBookings?allBookings.rows.map(row => row.checkout):[],
+            "room_status": allBookings?allBookings.rows.map(row => row.r_status):[],
+            "room_notes": allBookings?allBookings.rows.map(row => row.r_notes):[],
+            "booking_ref": allBookings?allBookings.rows.map(row => row.b_ref):[],
+            "room_type": allBookings?allBookings.rows.map(row => row.r_class):[],
         },
         "available": {
-            "no": available_rooms.rowCount,
-            "room_no": available_rooms.rows.map(row => row.r_no),
-            "room_type": available_rooms.rows.map(row => row.r_class),
-            "room_status": available_rooms.rows.map(row => row.r_status),
-            "room_notes": available_rooms.rows.map(row => row.r_notes),
+            "no": available_rooms?available_rooms.rowCount:0,
+            "room_no": available_rooms?available_rooms.rows.map(row => row.r_no):[],
+            "room_type": available_rooms?available_rooms.rows.map(row => row.r_class):[],
+            "room_status": available_rooms?available_rooms.rows.map(row => row.r_status):[],
+            "room_notes": available_rooms?available_rooms.rows.map(row => row.r_notes):[],
         },
         "unavailable": {
-            "no": unavailable_rooms.rowCount,
-            "room_no": unavailable_rooms.rows.map(row => row.r_no),
-            "room_type": unavailable_rooms.rows.map(row => row.r_class),
-            "room_status": unavailable_rooms.rows.map(row => row.r_status),
-            "room_notes": unavailable_rooms.rows.map(row => row.r_notes),
+            "no": unavailable_rooms?unavailable_rooms.rowCount:0,
+            "room_no": unavailable_rooms?unavailable_rooms.rows.map(row => row.r_no):[],
+            "room_type": unavailable_rooms?unavailable_rooms.rows.map(row => row.r_class):[],
+            "room_status": unavailable_rooms?unavailable_rooms.rows.map(row => row.r_status):[],
+            "room_notes": unavailable_rooms?unavailable_rooms.rows.map(row => row.r_notes):[],
+            "booking_ref": unavailable_rooms?unavailable_rooms.rows.map(row => row.b_ref):[],
+
         },
         "checked_out": {
-            "no": checked_out.rowCount,
-            "room_no": checked_out.rows.map(row => row.r_no),
-            "room_type": checked_out.rows.map(row => row.r_class),
-            "room_status": checked_out.rows.map(row => row.r_status),
-            "room_notes": checked_out.rows.map(row => row.r_notes),
+            "no": checked_out?checked_out.rowCount:0,
+            "room_no": checked_out?checked_out.rows.map(row => row.r_no):[],
+            "room_type": checked_out?checked_out.rows.map(row => row.r_class):[],
+            "room_status": checked_out?checked_out.rows.map(row => row.r_status):[],
+            "room_notes": checked_out?checked_out.rows.map(row => row.r_notes):[],
         },
     };
 
@@ -74,6 +76,7 @@ router.get("/", async (req, res) => {
 
 router.post("/reception/check_in", async (req,res) =>{
     const room_number = req.body["r_no"];
+    const ref_number = req.body["r_ref"];
 
     const data = {
         "message": "",
@@ -81,7 +84,7 @@ router.post("/reception/check_in", async (req,res) =>{
     }
     
     try{
-        await database_rooms.updateRoomAvaliability(room_number, "O")
+        await database_rooms.updateRoomAvaliability(room_number, "O", ref_number)
         data.message = "Successfully Updated Room Status"
         data.status_code = 200
 
@@ -94,19 +97,23 @@ router.post("/reception/check_in", async (req,res) =>{
 
 router.post("/reception/check_out", async (req,res) =>{
     const room_number = req.body["r_no"];
+    const ref_number = req.body["r_ref"];
 
     const data = {
+        "price": null,
         "message": "",
         "status_code": null
     }
     
     try{
-        await database_rooms.updateRoomAvaliability(room_number, "C")
-        data.message = "Successfully Updated Room Status"
+        // await database_rooms.updateRoomAvaliability(room_number, "C", ref_number)
+        let response = await database_rooms.getPrice(ref_number)
+        data.price = response.rows[0].b_outstanding
+        data.message = "Successfully Checked out"
         data.status_code = 200
 
     } catch (error){
-        data.message = "Error Updating room status: " + error
+        data.message = "Error Checking out: " + error
         data.status_code = 402
     }
     res.send(data)

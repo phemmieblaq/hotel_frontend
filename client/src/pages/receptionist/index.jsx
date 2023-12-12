@@ -4,6 +4,7 @@ import './style.css'
 import StatusCard from '../../components/cards/statusCard'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import Footer from '../../containers/footer';
 
 const Receptionist = ({user}) => {
   // Defult State wit all room counts at 'Zero'
@@ -13,19 +14,21 @@ const Receptionist = ({user}) => {
   let [rooms, setRooms] = useState([])
 
   // Status card info's
-  const addRoom = (title, roomNumber, status, date, ref_no) => {
+  const addRoom = (roomInfo) => {
     // Create a new room
     const newRoom = {
-      title: title || null,
-      roomNumber: roomNumber || null,
-      date: date || null,
-      ref_no: ref_no || null,
-      status: status || null
+      title: roomInfo.title || null,
+      roomNumber: roomInfo.roomNumber || null,
+      date: roomInfo.date || null,
+      ref_no: roomInfo.ref_no || null,
+      status: roomInfo.status || null
     };
-
+    // console.log(newRoom)
+  
     // Update the state by adding the new room to the existing array
     setRooms((prevRooms) => [...prevRooms, newRoom]);
   };
+  
 
   // Format date string
   function formatDateString(inputDate) {
@@ -56,35 +59,45 @@ const Receptionist = ({user}) => {
         if (cardTitle === "Booking"){
           setRooms([])    //clear the rooms on the page rn
           for(let i = 0; i<response.data.bookings.no; i++){
-            addRoom(response.data.bookings.room_type[i], 
-              response.data.bookings.room_no[i], 
-              response.data.bookings.room_status[i],
-              formatDateString(response.data.bookings.check_in[i]),
-              response.data.bookings.booking_ref[i])
+            addRoom({
+              title: response.data.bookings.room_type[i], 
+              roomNumber: response.data.bookings.room_no[i], 
+              status: response.data.bookings.room_status[i],
+              date: formatDateString(response.data.bookings.check_in[i]),
+              ref_no: response.data.bookings.booking_ref[i]
+            })
           }
         }
         else if (cardTitle === "Available rooms"){
           setRooms([])    //clear the rooms on the page rn
           for(let i = 0; i<response.data.available.no; i++){
-            addRoom(response.data.available.room_type[i], 
-              response.data.available.room_no[i], 
-              response.data.available.room_status[i])
+            addRoom({
+              title: response.data.available.room_type[i], 
+              roomNumber: response.data.available.room_no[i], 
+              status: response.data.available.room_status[i],
+              })
           }
         }
         else if (cardTitle === "Checked In"){
           setRooms([])    //clear the rooms on the page rn
           for(let i = 0; i<response.data.unavailable.no; i++){
-            addRoom(response.data.unavailable.room_type[i], 
-              response.data.unavailable.room_no[i], 
-              response.data.unavailable.room_status[i])
+            addRoom({
+              title: response.data.unavailable.room_type[i], 
+              roomNumber: response.data.unavailable.room_no[i], 
+              status: response.data.unavailable.room_status[i],
+              ref_no: response.data.unavailable.booking_ref[i]
+              })
           }
         }
         else if (cardTitle === "Checked out"){
           setRooms([])    //clear the rooms on the page rn
           for(let i = 0; i<response.data.checked_out.no; i++){
-            addRoom(response.data.checked_out.room_type[i], 
-              response.data.checked_out.room_no[i], 
-              response.data.checked_out.room_status[i])
+            
+            addRoom({
+              title: response.data.checked_out.room_type[i], 
+              roomNumber: response.data.checked_out.room_no[i], 
+              status: response.data.checked_out.room_status[i],
+              })
           }
         }
         checkPrime = true
@@ -101,7 +114,7 @@ const Receptionist = ({user}) => {
 
 
   return (
-    <div>
+    <div className='main-container'>
       <div className="statusWrapper">
         {analytics?.map((el, index) => (
           <AnalyticCard key={index} title={el?.title} number={el?.number} clickFun={clickFunction}/>

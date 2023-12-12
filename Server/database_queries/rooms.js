@@ -75,11 +75,13 @@ async function getRandomRoom(r_class){
 }
 
 // Get all rooms that are unavailable
-async function getAllUnavailableRooms(){
+async function getAllCheckedInRooms(){
     const qry = `
         SELECT *
-        FROM room
-        WHERE r_status = 'O';
+        FROM roombooking rb, room r
+        WHERE rb.r_no = r.r_no
+        and rb.r_status = 'O'
+        order by r.r_no;
     `
     try {
         // Set the search path before creating the table
@@ -88,7 +90,7 @@ async function getAllUnavailableRooms(){
         return response
     }
     catch (error) {
-        console.error("Error getting available rooms:", error);
+        console.error("Error getting Checked In rooms:", error);
     }
 }
 
@@ -99,6 +101,7 @@ async function getAllCheckOutRooms(){
         FROM room
         WHERE r_status = 'C';
     `
+
     try {
         // Set the search path before creating the table
         await setSchema();
@@ -111,8 +114,10 @@ async function getAllCheckOutRooms(){
 }
 
 // Update room availability
-async function updateRoomAvaliability(r_no, r_status){
-    const qry = `UPDATE room SET r_status = '${r_status}' WHERE r_no = ${r_no};`;
+async function updateRoomAvaliability(r_no, r_status, r_ref){
+    const qry = `UPDATE room SET r_status = '${r_status}' WHERE r_no = ${r_no};
+                UPDATE roombooking SET r_status = '${r_status}' WHERE b_ref = ${r_ref}
+                `;
 
     let response = null;
     try{
@@ -126,11 +131,28 @@ async function updateRoomAvaliability(r_no, r_status){
     return response
 }
 
+// Update room availability
+async function getPrice(r_ref){
+    const qry = `select b_outstanding from booking where b_ref = '${r_ref}';`;
+
+    let response = null;
+    try{
+        // Set the search path before creating the table
+        await setSchema();
+        response = (await pool.query(qry));
+    }
+    catch (error) {
+        response = "Error getting Price data: " + error;
+    }
+    return response
+}
+
 module.exports = {
     getAllAvailableRooms,
     getAllCheckOutRooms,
-    getAllUnavailableRooms,
+    getAllCheckedInRooms,
     updateRoomAvaliability,
     getRandomRoom,
-    getRatesForClass
+    getRatesForClass,
+    getPrice
 }

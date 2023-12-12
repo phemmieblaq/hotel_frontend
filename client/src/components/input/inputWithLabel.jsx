@@ -17,7 +17,7 @@ const InputWithLabel = ({
   rightIcon,
   container,
   placeholder,
-  secureTextEntry,
+  securetextentry,
   type,
   text,
   name,
@@ -88,7 +88,7 @@ const InputWithLabel = ({
         {register ? (
           <input className="Input"
             placeholder={placeholder}
-            secureTextEntry={secureTextEntry}
+            securetextentry={securetextentry}
             edit={edit}
             type={!show ? type || "password" : "text"}
             step={step || "any"}
@@ -107,7 +107,7 @@ const InputWithLabel = ({
           <input className="Input"
             ref={ref}
             placeholder={placeholder}
-            secureTextEntry={secureTextEntry}
+            securetextentry={securetextentry}
             edit={edit}
             type={!show ? type || "password" : "text"}
             step={step || "any"}

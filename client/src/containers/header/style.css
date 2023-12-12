@@ -15,6 +15,7 @@
 
     /* overflow-x: hidden;
     overflow-y: visible; */
+    height: 15vh;
 
     @media screen and (max-width: 800px) {
         padding: 54px 16px 32px 16px;
