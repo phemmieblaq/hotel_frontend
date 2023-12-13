@@ -60,7 +60,7 @@ const NumberInput = ({
         // style={phoneInputStyles}
       >
         <PhoneInput
-          country={"ng"}
+          country={"gb"}
           // countryCallingCodeEditable={false}
           value={value}
           onChange={onChange}
