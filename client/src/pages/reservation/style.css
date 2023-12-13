@@ -51,10 +51,11 @@
 }
 
 .mealCards {
-    background-color: #700511;
+    /* background-color: #700511; */
     padding: 2rem;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
     gap: 1rem; 
 }

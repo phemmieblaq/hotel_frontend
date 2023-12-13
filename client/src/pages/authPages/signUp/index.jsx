@@ -10,6 +10,7 @@ import { userRegistrationSchema } from '../authSchema';
 import { useNavigate } from 'react-router-dom'
 import Drawer from '../../../containers/drawer'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const SignUp = () => {
   let navigate = useNavigate();
@@ -35,6 +36,7 @@ const SignUp = () => {
   };
 
   const submitForm = async (formData) => {
+    console.log(formData)
 
     const postData = {
       "name": formData.full_name,
@@ -48,6 +50,9 @@ const SignUp = () => {
       console.log('Response:', response.data);
 
       localStorage.setItem("userInfo", JSON.stringify(response.data));
+      toast.success('account created successfully')
+      navigate('/signin')
+
 
 
 
