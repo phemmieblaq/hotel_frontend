@@ -19,16 +19,16 @@ const ReservationCard = ({ checkIn, checkOut, noOfDays, refNumber, roomNo }) => 
           <div className="flexwrapper">
             <ReservationDetails
               details='Duration'
-              filledDetails={`${noOfDays} days `} />
+              filledDetails={`${noOfDays} ${(noOfDays===0 ||noOfDays===1)?'day':'day'} `} />
           </div>
 
           <div className="flexwrapper">
             <ReservationDetails
               details='Check-in:'
-              filledDetails={checkIn} />
+              filledDetails={`${checkIn} 3:00PM`} />
             <ReservationDetails
               details='Check-out:'
-              filledDetails={checkOut} />
+              filledDetails={`${checkOut} 11:00AM`}  />
           </div>
         </div>
 
