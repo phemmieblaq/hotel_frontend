@@ -110,7 +110,7 @@ const Receptionist = ({user}) => {
   };
   useEffect(() => {
     fetchAccommodationFromBackend()
-  }, [cardTitle]);
+  }, [cardTitle, addRoom, formatDateString]);
 
 
   return (

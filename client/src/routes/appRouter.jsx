@@ -18,6 +18,7 @@ import AdminLayout from "../containers/layouts/adminLayout";
 import Receptionist from "../pages/receptionist";
 import Food from "../pages/reservation/food";
 import Drinks from "../pages/reservation/drinks";
+import PaymentConfirmation from "../containers/paymentConfirmation";
 const AppRouter = () => {
 
   return (
@@ -40,7 +41,10 @@ const AppRouter = () => {
             <Route path="forgotpassword" element={<ForgotPassword />} />
             <Route path="booking" element={<BookingForm />} />
             <Route path="payment" element={<PaymentForm />} />
+            <Route path="payment-confirmation" element={<PaymentConfirmation />} />
+            
             <Route path="booking-confirmation/:booking_ref" element={<Confirmation />}>
+
               <Route index element={<Food />} />
               <Route path='drinks' element={<Drinks />} />
             </Route>

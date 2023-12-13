@@ -6,9 +6,11 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { paymentSchema } from './paymentSchema'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const PaymentForm = () => {
   // Make a POST to get the price of the bookig
+  let navigate = useNavigate();
   const get_price = async () => {
     try {
       const response = await axios.post('http://localhost:3001/payment/price');
@@ -32,29 +34,8 @@ const PaymentForm = () => {
   });
 
   const submitForm = async (formData) => {
-
-    const postData = {
-      "user_email": formData.email,
-      "card_name": formData.cardName,
-      "card_number": formData.cardNumber,
-      "card_type": formData.cvv,
-      "exp": formData.expiryDate
-  }
-    // Make a POST request using Axios
-    try {
-      const response = await axios.post("apiUrl", postData);
-      console.log('Response:', response.data);
-
-      localStorage.setItem("userInfo", JSON.stringify(response.data));
-
-
-
-    } catch (error) {
-      // Handle the error
-      console.error('Error:', error.message);
-
-    }
-
+navigate('/payment-confirmation')
+    
     // localStorage.setItem("userEmail", formData.email);
   }
   return (
