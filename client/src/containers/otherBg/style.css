@@ -1,0 +1,83 @@
+.bgWrapper{
+    max-width:100%;
+  
+   background-size: cover;
+  width:100%;
+  height: auto;
+   position:relative;
+   top:176px;
+   margin-bottom: 110px;
+   display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      @media screen and (max-width: 800px) {
+        top:142px;
+      
+        }
+   
+  
+  
+
+   
+   
+ 
+}
+.backgroundWrapper{
+    width:100%;
+}
+
+.custom-bg {
+    width: 100%;
+    max-height: 298px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+   
+.inner-container_bg{
+    position:absolute;
+    max-width: 826px;
+    width:100%;
+  
+    max-height:80px;
+    height: 100vh;
+
+   /* change this later */
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+
+
+   
+    border-radius: 12px;
+background: rgba(0, 0, 0, 0.50);
+display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+   
+
+}
+
+
+
+.content_title{
+    color: #FFF;
+text-align: center;
+font-family: Familjen Grotesk;
+font-size: 64px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 24px 0px 24px 0px;
+@media screen and (max-width: 800px) {
+  font-size: 28px;
+
+  }
+  @media screen and (max-width: 1100px) {
+    font-size: 40px;
+  
+    }
+}
+

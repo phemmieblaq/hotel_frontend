@@ -1,0 +1,24 @@
+.mainCardWrapper{ 
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 40px;
+   
+    
+ 
+   
+    padding-inline: 100px;
+  
+    margin-bottom: 80px;
+  
+    
+    
+  
+}
+  .button_Wrapper{
+    width:100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+  }

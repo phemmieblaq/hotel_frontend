@@ -1,0 +1,32 @@
+.card-size{
+    display: flex;
+justify-content: center;
+align-items: center;
+max-width: 300px;
+flex-direction: column;
+padding:38px;
+width: 100%;
+gap:16px;
+border-radius: 16px;
+
+
+
+}
+.mainTitle{
+    color: var(--text-secondary, #4B4848);
+font-family: Familjen Grotesk;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}
+.card-size h2{
+    color: var(--text-primary, #2C2B2B);
+font-family: Familjen Grotesk;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+}

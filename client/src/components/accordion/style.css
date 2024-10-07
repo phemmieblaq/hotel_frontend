@@ -1,0 +1,69 @@
+
+.all-containers{
+   
+  max-width: 100%;
+    display: flex;
+    
+flex-direction: column;
+
+
+
+
+
+
+
+
+
+}
+
+
+.small-wrapper{
+ 
+    width:100%;
+    display: flex;
+justify-content: space-between;
+align-items: center;
+
+
+gap:24px;
+
+}
+.question {
+    color: #2C2B2B;
+font-family: Familjen Grotesk;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+@media screen and (max-width: 700px) {
+   font-size: 18px;
+  }
+}
+.ImageWrapper{
+display: flex;
+width: 40px;
+height: 40px;
+padding: 8px;
+justify-content: center;
+align-items: center;
+border-radius: 40px;
+
+
+background: #FFF;
+
+}
+
+
+.answer{
+ color: var(--text-secondary);
+
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+@media screen and (max-width: 700px) {
+   font-size: 14px;
+  }
+
+
+}
